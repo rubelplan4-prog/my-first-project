@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">    
+    <meta http-equiv="Content-Security-Policy" 
+      content="default-src 'self';
+               script-src 'self' 'unsafe-inline' 'unsafe-eval' https://*.gstatic.com https://*.googleapis.com https://*.google.com https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://pagead2.googlesyndication.com https://adservice.google.com https://*.adtrafficquality.google;
+               style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.jsdelivr.net https://cdnjs.cloudflare.com;
+               font-src 'self' https://fonts.gstatic.com;
+               frame-src 'self' https://*.firebaseapp.com https://*.web.app https://accounts.google.com https://*.doubleclick.net https://www.google.com https://pagead2.googlesyndication.com https://adservice.google.com https://*.adtrafficquality.google;
+               img-src 'self' data: https://*.googleusercontent.com https://*.gstatic.com https://*.google.com https://*.googlesyndication.com https://*.doubleclick.net https://*.adtrafficquality.google;
+               connect-src 'self' https://*.googleapis.com https://*.firebaseio.com https://*.google.com https://*.firebaseapp.com https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://*.gstatic.com https://*.adtrafficquality.google https://*.adtrafficquality.google.com https://pagead2.googlesyndication.com;">
+    
+<!-- SEO & Indexing -->
+    <title>Smart Presentation ERP | Global Industrial KPI Dashboard</title>
+    <meta name="description" content="Global Smart Presentation ERP provides real-time KPI dashboards for the international RMG and Textile industry. Manage production targets and automated presentations worldwide.">
+    <meta name="keywords" content="Global RMG ERP, Textile Industry KPI Dashboard, Industrial Presentation Slides, Excel KPI Tracking, Production Target, Smart ERP Bangladesh, Apparel Analytics">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+
+    <!-- Canonical Tag: আপনার ব্রাউজার ইউআরএল অনুযায়ী চেক করুন (www ছাড়া হলে www বাদ দিন) -->
+    <link rel="canonical" href="https://smartpresentationerp.com/">
+
+    <!-- Google AdSense -->
+    <meta name="google-adsense-account" content="ca-pub-8648299603771033">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8648299603771033" crossorigin="anonymous"></script>
+
+    <!-- Updated Favicons & Branding (Using your new gear icon files) -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="shortcut icon" href="/favicon.ico">
+    
+    <!-- External Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11" defer></script>
+
+    
+</head>

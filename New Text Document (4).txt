@@ -1,0 +1,2513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">    
+    <meta http-equiv="Content-Security-Policy" 
+      content="default-src 'self';
+               script-src 'self' 'unsafe-inline' 'unsafe-eval' https://*.gstatic.com https://*.googleapis.com https://*.google.com https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://pagead2.googlesyndication.com https://adservice.google.com https://*.adtrafficquality.google;
+               style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.jsdelivr.net https://cdnjs.cloudflare.com;
+               font-src 'self' https://fonts.gstatic.com;
+               frame-src 'self' https://*.firebaseapp.com https://*.web.app https://accounts.google.com https://*.doubleclick.net https://www.google.com https://pagead2.googlesyndication.com https://adservice.google.com https://*.adtrafficquality.google;
+               img-src 'self' data: https://*.googleusercontent.com https://*.gstatic.com https://*.google.com https://*.googlesyndication.com https://*.doubleclick.net https://*.adtrafficquality.google;
+               connect-src 'self' https://*.googleapis.com https://*.firebaseio.com https://*.google.com https://*.firebaseapp.com https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://*.gstatic.com https://*.adtrafficquality.google https://*.adtrafficquality.google.com https://pagead2.googlesyndication.com;">
+    
+<!-- SEO & Indexing -->
+    <title>Smart Presentation ERP | Global Industrial KPI Dashboard</title>
+    <meta name="description" content="Global Smart Presentation ERP provides real-time KPI dashboards for the international RMG and Textile industry. Manage production targets and automated presentations worldwide.">
+    <meta name="keywords" content="Global RMG ERP, Textile Industry KPI Dashboard, Industrial Presentation Slides, Excel KPI Tracking, Production Target, Smart ERP Bangladesh, Apparel Analytics">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+
+    <!-- Canonical Tag: আপনার ব্রাউজার ইউআরএল অনুযায়ী চেক করুন (www ছাড়া হলে www বাদ দিন) -->
+    <link rel="canonical" href="https://smartpresentationerp.com/">
+
+    <!-- Google AdSense -->
+    <meta name="google-adsense-account" content="ca-pub-8648299603771033">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8648299603771033" crossorigin="anonymous"></script>
+
+    <!-- Updated Favicons & Branding (Using your new gear icon files) -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="shortcut icon" href="/favicon.ico">
+    
+    <!-- External Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11" defer></script>
+
+    <style>
+        :root { 
+            --primary: #00bcd4; 
+            --sidebar-bg: #f4f7fe; 
+            --sidebar-text: #333;
+            --card-shadow: 0 10px 30px rgba(0,0,0,0.1); 
+            --active-tab: #00bcd4; 
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Arial, sans-serif; }
+        body { background-color: #f4f7fe; display: flex; height: 100vh; overflow: hidden; }
+
+        /* Sidebar & Layout */
+        .sidebar { width: 250px; background: var(--sidebar-bg); padding: 25px 15px; color: var(--sidebar-text); display: flex; flex-direction: column; transition: 0.3s; z-index: 100; border-right: 1px solid #d0d7de; }
+        .sidebar.collapsed { margin-left: -250px; }
+        .sidebar-title { font-size: 20px; font-weight: bold; margin-bottom: 40px; border-left: 5px solid var(--primary); padding-left: 10px; color: #000; }
+        .nav-item { padding: 12px 15px; border-radius: 10px; cursor: pointer; color: #555; margin-bottom: 8px; transition: 0.3s; display: flex; align-items: center; gap: 10px; }
+        .nav-item.active { background: #fff; color: var(--primary); font-weight: bold; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+
+        .main-content { flex: 1; display: flex; flex-direction: column; overflow: hidden; position: relative; }
+        .header { display: flex; justify-content: space-between; align-items: center; background: #f4f7fe; padding: 15px 25px; border-bottom: 1px solid #e0e0e0; }
+        .menu-btn { font-size: 24px; cursor: pointer; background: none; border: none; margin-right: 15px; }
+
+        /* Card Styles */
+        .card { width: 4in; height: 2in; background: white; border-radius: 20px; padding: 15px 25px; display: flex; justify-content: space-between; align-items: center; box-shadow: 10px 10px 20px rgba(0,0,0,0.1); border: 1px solid #eee; cursor: pointer; flex-shrink: 0; position: relative; animation: slideUp 0.6s ease-out; }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .three-dot { position: absolute; top: 15px; right: 15px; cursor: pointer; font-size: 20px; color: #888; padding: 5px 10px; z-index: 10; }
+        .dot-menu { position: absolute; top: 45px; right: 15px; background: white; box-shadow: 0 5px 15px rgba(0,0,0,0.2); border-radius: 10px; display: none; z-index: 100; overflow: hidden; border: 1px solid #eee; }
+        .dot-menu p { padding: 10px 20px; margin: 0; cursor: pointer; transition: 0.2s; font-size: 14px; white-space: nowrap; }
+        .dot-menu p:hover { background: #f4f7fe; color: var(--primary); }
+
+        .card-info h2 { font-size: 24px; color: #000; margin-bottom: 5px; font-weight: bold; padding-right: 20px; }
+        .stat-row { display: grid; grid-template-columns: 80px 20px 1fr; font-size: 24px; color: #000; align-items: center; }
+        .colon { color: #555; font-weight: bold; text-align: Top; }
+
+        .circle-box { position: relative; width: 110px; height: 110px; flex-shrink: 0; }
+        .circle-box svg { width: 110px; height: 110px; transform: rotate(-90deg); }
+        .circle-box circle { fill: none; stroke-width: 10; stroke-linecap: round; transition: stroke-dashoffset 1.5s cubic-bezier(0.4, 0, 0.2, 1); }
+        .c-bg { stroke: #f0f4f9; }
+        .c-val { stroke: var(--primary); }
+        .perc { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 24px; font-weight: bold; }
+
+        .pie-container { width: 120px; height: 120px; position: relative; }
+
+        /* 20 Unique Card Colors & Circle Strokes */
+        .card:nth-child(20n+1) { border-left: 10px solid #00bcd4; } .card:nth-child(20n+1) .c-val { stroke: #00bcd4; }
+        .card:nth-child(20n+2) { border-left: 10px solid #ff9800; } .card:nth-child(20n+2) .c-val { stroke: #ff9800; }
+        .card:nth-child(20n+3) { border-left: 10px solid #e91e63; } .card:nth-child(20n+3) .c-val { stroke: #e91e63; }
+        .card:nth-child(20n+4) { border-left: 10px solid #4caf50; } .card:nth-child(20n+4) .c-val { stroke: #4caf50; }
+        .card:nth-child(20n+5) { border-left: 10px solid #9c27b0; } .card:nth-child(20n+5) .c-val { stroke: #9c27b0; }
+        .card:nth-child(20n+6) { border-left: 10px solid #3f51b5; } .card:nth-child(20n+6) .c-val { stroke: #3f51b5; }
+        .card:nth-child(20n+7) { border-left: 10px solid #f44336; } .card:nth-child(20n+7) .c-val { stroke: #f44336; }
+        .card:nth-child(20n+8) { border-left: 10px solid #795548; } .card:nth-child(20n+8) .c-val { stroke: #795548; }
+        .card:nth-child(20n+9) { border-left: 10px solid #607d8b; } .card:nth-child(20n+9) .c-val { stroke: #607d8b; }
+        .card:nth-child(20n+10) { border-left: 10px solid #ff5722; } .card:nth-child(20n+10) .c-val { stroke: #ff5722; }
+        .card:nth-child(20n+11) { border-left: 10px solid #009688; } .card:nth-child(20n+11) .c-val { stroke: #009688; }
+        .card:nth-child(20n+12) { border-left: 10px solid #ffc107; } .card:nth-child(20n+12) .c-val { stroke: #ffc107; }
+        .card:nth-child(20n+13) { border-left: 10px solid #8bc34a; } .card:nth-child(20n+13) .c-val { stroke: #8bc34a; }
+        .card:nth-child(20n+14) { border-left: 10px solid #03a9f4; } .card:nth-child(20n+14) .c-val { stroke: #03a9f4; }
+        .card:nth-child(20n+15) { border-left: 10px solid #673ab7; } .card:nth-child(20n+15) .c-val { stroke: #673ab7; }
+        .card:nth-child(20n+16) { border-left: 10px solid #ffeb3b; } .card:nth-child(20n+16) .c-val { stroke: #ffeb3b; }
+        .card:nth-child(20n+17) { border-left: 10px solid #cddc39; } .card:nth-child(20n+17) .c-val { stroke: #cddc39; }
+        .card:nth-child(20n+18) { border-left: 10px solid #ff5252; } .card:nth-child(20n+18) .c-val { stroke: #ff5252; }
+        .card:nth-child(20n+19) { border-left: 10px solid #448aff; } .card:nth-child(20n+19) .c-val { stroke: #448aff; }
+        .card:nth-child(20n+20) { border-left: 10px solid #e040fb; } .card:nth-child(20n+20) .c-val { stroke: #e040fb; }
+
+        .group-card { animation: fadeIn 0.5s ease-in; transition: transform 0.3s ease; }
+        .group-card:hover { transform: scale(1.02); }
+
+        #reportView { height: 100%; padding: 25px; display: flex; gap: 25px; overflow: hidden; }
+        .report-left { flex: 1.8; display: flex; flex-direction: column; gap: 25px; overflow-y: auto; }
+        .report-right { flex: 1.2; display: flex; flex-direction: column; gap: 20px; overflow-y: auto; padding-right: 5px; }
+
+        .chart-container { background: white; padding: 40px 25px; border-radius: 25px; min-height: 480px; box-shadow: var(--card-shadow); margin-top: 10px; }
+
+        #loadingSpinner { display: none; position: absolute; inset: 0; background: rgba(255,255,255,0.7); z-index: 9999; justify-content: center; align-items: center; }
+        .spinner { width: 50px; height: 50px; border: 5px solid #f3f3f3; border-top: 5px solid var(--primary); border-radius: 50%; animation: spin 1s linear infinite; }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        .hidden { display: none !important; }
+
+        /* Modals */
+        .modal { display: none; position: fixed; z-index: 1000; inset: 0; background: rgba(0,31,63,0.4); backdrop-filter: blur(5px); }
+        .modal-content { background: white; margin: 2% auto; padding: 25px; width: 95%; max-width: 450px; border-radius: 20px; max-height: 90vh; overflow-y: auto; position: relative; }
+        .close-icon { position: absolute; top: 15px; right: 20px; font-size: 24px; cursor: pointer; color: #888; font-weight: bold; }
+        .val-in { width: 90px; padding: 8px; border: 1px solid #ddd; border-radius: 8px; text-align: right; font-weight: bold; }
+        .save-btn { width: 100%; padding: 12px; background: var(--primary) !important; color: #fff; border: none; border-radius: 10px; font-weight: bold; cursor: pointer; margin-top: 15px; }
+
+        .share-item { display: flex; justify-content: space-between; padding: 10px; border-bottom: 1px solid #eee; }
+
+        /* User Profile Wrapper */
+        .user-profile-chip { display: flex; align-items: center; background: #ffffff; padding: 5px 15px 5px 6px; border-radius: 50px; border: 1px solid #e0e6ed; cursor: pointer; transition: all 0.2s ease; box-shadow: 0 2px 8px rgba(0,0,0,0.04); }
+        .user-profile-chip:hover { background: #fff5f5; border-color: #ffcdd2; transform: translateY(-1px); }
+        .user-profile-chip img { width: 36px; height: 36px; border-radius: 50%; object-fit: cover; border: 2px solid var(--primary); }
+        .user-profile-chip .user-info-text { display: flex; flex-direction: column; margin-left: 10px; pointer-events: none; }
+        .u-name-text { font-size: 13px; font-weight: 700; color: #333; line-height: 1.2; }
+        .u-email-text { font-size: 11px; color: #888; }
+        .user-profile-chip:active { transform: scale(0.96); }
+
+        .a4-container { width: 210mm; margin: 0 auto; background: #fff; color: #000; }
+        .a4-page { min-height: 297mm; padding: 15mm; box-sizing: border-box; display: flex; flex-direction: column; font-family: Arial, sans-serif; }
+        .report-table { width: 100%; border-collapse: collapse; border: 1px solid #000; margin-top: 20px; }
+        .report-table th, .report-table td { border: 1px solid #000; padding: 8px; font-size: 18px; text-align: center; }
+        #companyName { font-size: 32px; font-weight: normal; margin-bottom: 8px; text-align: center; }
+        #reportTitle { font-size: 20px; font-weight: normal; margin-bottom: 10px; text-align: center; }
+        #masterModeForm { display: none; } 
+
+        table, #overviewDetailsModal table, #groupDetailsModal table, #analyticsTable { width: 100%; border-collapse: collapse !important; font-family: Arial, sans-serif; margin: 0; }
+        table th, table td { border: 1px solid #000 !important; padding: 3px 6px !important; font-size: 14px !important; color: #000; line-height: 1.2; }
+        table th { font-weight: bold; background-color: #ffffff; text-align: center; position: sticky; top: 0; z-index: 10; }
+        table td:empty::before { content: "-"; }
+        table tbody tr:hover { background-color: #f2f2f2; } 
+
+        #printableAreaOverview, #printableAreaGroup, #printWrapper, .modal-body { overflow: auto; max-height: 80vh; padding: 0 !important; }
+        #overviewDetailsModal .modal-body, #groupDetailsModal .modal-body { border: 1px solid #000; }
+        #groupDetailsModal .modal-content { max-height: 90vh; border: 1px solid #000; margin: 20px auto; width: 95%; display: flex; flex-direction: column; } 
+
+        /* For your Ad Container */
+        ins.adsbygoogle { display: block !important; width: 100% !important; min-height: 100px; }
+        /* Ad container styling */
+        .adsbygoogle { display: block !important; width: 100% !important; min-width: 250px; min-height: 90px; overflow: hidden; } 
+
+        @media print {
+            #printableAreaOverview, #printableAreaGroup, .modal-body, #printWrapper { overflow: visible !important; max-height: none !important; border: none !important; }
+            body * { visibility: hidden; }
+            #printableAreaAnalytics, #printableAreaGroup, #printableAreaOverview { visibility: visible !important; position: absolute !important; left: 0 !important; top: 0 !important; width: 100% !important; margin: 0 !important; }
+            #printableAreaAnalytics *, #printableAreaGroup *, #printableAreaOverview * { visibility: visible !important; }
+            .print-landscape { width: 297mm !important; }
+            @page { size: auto; margin: 10mm; }
+            body.landscape-mode { @page { size: A4 landscape; } }
+            body.portrait-mode { @page { size: A4 portrait; } }
+            #printableAreaAnalytics { transform: scale(0.9); transform-origin: top left; }
+            .no-print, .sidebar, .header, .modal-header, button { display: none !important; }
+            table th { position: static !important; }
+        }
+    </style>
+</head>
+<body onclick="closeAllMenus()">
+
+    <div id="loadingSpinner">
+        <div class="spinner"></div>
+    </div>
+
+    <div id="landingPage" style="width: 100%; height: 100vh; overflow-y: auto; background: #fff; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; scroll-behavior: smooth;">
+
+    <header style="padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #eee; position: sticky; top: 0; background: rgba(255,255,255,0.98); z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.03);">
+        <div style="display: flex; align-items: center; gap: 12px;">
+            <h1 style="margin: 0; font-size: 26px; font-weight: 800; letter-spacing: -1px; display: flex; align-items: center;">
+                <span style="color: #1a1a1a;">Smart</span>
+                <span style="color: #00bcd4; margin-left: 5px;">Presentation</span>
+                <span style="color: #555; font-size: 14px; font-weight: 400; margin-left: 8px; border-left: 1px solid #ddd; padding-left: 8px;">ERP Global</span>
+            </h1>
+        </div>
+
+        <nav id="landing-nav" style="display: flex; gap: 20px; align-items: center;">
+            <a href="#about" style="text-decoration: none; color: #444; font-size: 14px; font-weight: 600; transition: 0.3s;" onmouseover="this.style.color='#00bcd4'" onmouseout="this.style.color='#444'">Overview</a>
+            <a href="#presentation-module" style="text-decoration: none; color: #444; font-size: 14px; font-weight: 600; transition: 0.3s;" onmouseover="this.style.color='#00bcd4'" onmouseout="this.style.color='#444'">Features</a>
+            <a href="#user-guide" style="text-decoration: none; color: #444; font-size: 14px; font-weight: 600; transition: 0.3s;" onmouseover="this.style.color='#00bcd4'" onmouseout="this.style.color='#444'">Guide</a>
+            <a href="#policy-deep-dive" style="text-decoration: none; color: #444; font-size: 14px; font-weight: 600; transition: 0.3s;" onmouseover="this.style.color='#00bcd4'" onmouseout="this.style.color='#444'">Privacy</a>
+        </nav>
+
+        <div id="landing-auth-trigger">
+            <button onclick="loginUser()" style="padding: 10px 28px; background: #00bcd4; color: white; border: none; border-radius: 25px; cursor: pointer; font-weight: bold; font-size: 14px; transition: all 0.3s ease; box-shadow: 0 4px 12px rgba(0,188,212,0.2);">
+                Login with Google
+            </button>
+        </div>
+    </header>
+
+    <div style="display: flex; flex-wrap: nowrap; justify-content: center; width: 100%;">
+
+        <aside style="width: 288px; flex-shrink: 0; padding: 15px; background: #fcfcfc; border-right: 1px solid #f0f0f0; position: sticky; top: 80px; align-self: flex-start;">
+            <span style="display: block; font-size: 11px; color: #bbb; margin-bottom: 10px; letter-spacing: 1px; text-transform: uppercase; font-weight: 600; text-align: center;">Advertisement</span>
+            <div style="width: 100%; min-height: 600px; overflow: hidden;">
+                <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8648299603771033" crossorigin="anonymous"></script>
+                <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8648299603771033" data-ad-slot="9606648113" data-ad-format="vertical" data-full-width-responsive="false"></ins>
+                <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+            </div>
+        </aside>
+
+        <main style="flex: 1; max-width: 1100px;">
+            
+            <section id="about" style="padding: 80px 10%; background: #ffffff;">
+                <div style="max-width: 1100px; margin: 0 auto;">
+                    <h2 style="font-size: 35px; color: #1a1a1a; margin-bottom: 30px; text-align: center; font-weight: 800; line-height: 1.2;">Revolutionizing Global Industrial Management</h2>
+                    <p style="font-size: 18px; color: #444; line-height: 1.8; margin-bottom: 25px; text-align: justify;">
+                        In the heart of the world's most dynamic manufacturing hubs, <strong>Smart Presentation ERP</strong> stands as a beacon of digital transformation. Designed specifically for the high-demand RMG, textile, and diverse manufacturing sectors worldwide, our platform is not just a software; it is a strategic partner for global growth. We eliminate inefficiencies by providing a centralized, real-time, and cloud-integrated ecosystem for businesses operating across borders.
+                    </p>
+                    <p style="font-size: 18px; color: #444; line-height: 1.8; margin-bottom: 25px; text-align: justify;">
+                        Modern manufacturing requires more than just data entry; it requires <strong>Industrial Intelligence</strong>. Smart Presentation ERP analyzes complex global workflows, from raw material procurement to final product shipment. By using high-performance algorithms, we help factories worldwide optimize machine utilization, reduce wastage, and maintain international quality standards. This system is tailored to handle high-volume production environments across any geographic location.
+                    </p>
+                    <p style="font-size: 18px; color: #444; line-height: 1.8; margin-bottom: 25px; text-align: justify;">
+                        The industrial sector is a high-stakes environment where every minute of downtime translates into significant financial loss. <strong>Smart Presentation ERP</strong> bridges the communication gap between the production floor and the executive office. Utilizing the latest advancements in cloud technology, we ensure that production data is instantly accessible to management, whether they are on-site or monitoring operations from across the globe.
+                    </p>
+                    <h3 style="font-size: 28px; color: #00bcd4; margin-top: 50px; font-weight: 700;">The Importance of Real-Time Data Visualization</h3>
+                    <p style="font-size: 17px; color: #555; line-height: 1.8; margin-bottom: 25px; text-align: justify;">
+                        Our ERP changes the traditional reporting narrative. With our "Live KPI Dashboard," production targets and actual output are plotted on dynamic charts in real-time. If a production line falls behind schedule anywhere in the world, the system highlights it immediately. This allows for proactive intervention, which is the cornerstone of modern Lean Manufacturing principles on an international scale.
+                    </p>
+                    <h3 style="font-size: 28px; color: #00bcd4; margin-top: 50px; font-weight: 700;">Tailored Solutions for Global Industry Challenges</h3>
+                    <p style="font-size: 17px; color: #555; line-height: 1.8; margin-bottom: 25px; text-align: justify;">
+                        Every region has unique industrial challenges. Smart Presentation ERP is built with a flexible architecture to meet these diverse needs. Our system supports multi-currency reporting, flexible shifts, and high-performance indexing that handles millions of rows of data without lag. We understand that scalability is key; therefore, our architecture supports growing from a single unit to a massive multi-national conglomerate effortlessly.
+                    </p>
+                    <div style="background: #f4f7fe; padding: 40px; border-radius: 30px; border-left: 8px solid #00bcd4; margin: 50px 0; box-shadow: 0 5px 15px rgba(0,0,0,0.05);">
+                        <h3 style="color: #1a1a1a; margin-bottom: 15px; font-size: 24px; font-weight: 700;">Sustainable Industrial Growth through Digitalization</h3>
+                        <p style="color: #444; font-style: italic; font-size: 17px; line-height: 1.7;">
+                            "Our vision is to empower every manufacturing unit globally with the tools of the Fourth Industrial Revolution. By digitizing production data, we don't just increase efficiency— we create a legacy of transparency, accountability, and world-class industrial standards."
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="presentation-module" style="padding: 80px 10%; background: #f9f9f9; border-top: 1px solid #eee;">
+                <div style="max-width: 1100px; margin: 0 auto;">
+                    <h2 style="font-size: 34px; color: #1a1a1a; margin-bottom: 30px; font-weight: 800; text-align: center;">Advanced Digital Presentation & Slide View</h2>
+                    <p style="font-size: 18px; color: #444; line-height: 1.8; text-align: justify; margin-bottom: 25px;">
+                        The most powerful feature of Smart Presentation ERP is its <strong>Automated Presentation Module</strong>. Globally, creating individual slides for daily production meetings is a time-consuming task. Our ERP software converts your live production data directly into professional digital slides, ready for any boardroom.
+                    </p>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 30px;">
+                        <div style="background: #fff; padding: 25px; border-radius: 15px; border: 1px solid #eee; box-shadow: 0 4px 6px rgba(0,0,0,0.02);">
+                            <h4 style="color: #00bcd4; margin-bottom: 10px; font-size: 20px;">Live Production Slides</h4>
+                            <p style="font-size: 15px; color: #666; line-height: 1.6;">The output of every machine in your factory will automatically display in a slide format. As data refreshes during the meeting, the slides update instantly.</p>
+                        </div>
+                        <div style="background: #fff; padding: 25px; border-radius: 15px; border: 1px solid #eee; box-shadow: 0 4px 6px rgba(0,0,0,0.02);">
+                            <h4 style="color: #00bcd4; margin-bottom: 10px; font-size: 20px;">Visual KPI Presentation</h4>
+                            <p style="font-size: 15px; color: #666; line-height: 1.6;">Present Key Performance Indicators (KPIs) through beautiful charts and graphs, giving them a professional look that simplifies global management decision-making.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="excel-module" style="padding: 80px 10%; background: #ffffff; border-top: 1px solid #eee;">
+                <div style="max-width: 1100px; margin: 0 auto;">
+                    <h2 style="font-size: 34px; color: #1a1a1a; margin-bottom: 30px; font-weight: 800; text-align: center;">Seamless Microsoft Excel Integration</h2>
+                    <p style="font-size: 18px; color: #444; line-height: 1.8; text-align: justify; margin-bottom: 25px;">
+                        Excel is a universal tool in the manufacturing sector. That is why we have integrated advanced <strong>Excel Data Management</strong> features into Smart Presentation ERP to streamline your global workflow.
+                    </p>
+                    <ul style="font-size: 17px; color: #555; line-height: 2; margin-bottom: 30px; list-style-type: '✔ '; padding-left: 20px;">
+                        <li><strong>Bulk Import:</strong> Import thousands of rows of production data with a single click from standard Excel files globally.</li>
+                        <li><strong>Custom Excel Export:</strong> Download any report directly in .xlsx format for offline analysis according to international standards.</li>
+                        <li><strong>Formula Preservation:</strong> Our system ensures data processing while maintaining original Excel formats and data structures.</li>
+                    </ul>
+                    <p style="font-size: 16px; color: #666; font-style: italic; border-left: 4px solid #eee; padding-left: 15px;">"Managing your global industrial data is now as easy as an Excel sheet, with the power of a Cloud ERP."</p>
+                </div>
+            </section>
+
+            <section id="features-detail" style="padding: 80px 10%; background: #fcfcfc; border-top: 1px solid #f0f0f0;">
+                <h2 style="text-align: center; font-size: 36px; font-weight: 800; margin-bottom: 60px;">Why Choose Smart Presentation ERP Global?</h2>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px;">
+                    <div style="background: white; padding: 35px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border: 1px solid #f0f0f0;">
+                        <h4 style="color: #00bcd4; font-size: 22px; margin-bottom: 15px;">Advanced Analytics Engine</h4>
+                        <p style="color: #666; font-size: 15px; line-height: 1.7;">Our system analyzes efficiency percentages, target vs. achievement ratios, and identifies global seasonal trends. Forecast future production capacity with up to 98% accuracy based on historical trends.</p>
+                    </div>
+                    <div style="background: white; padding: 35px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border: 1px solid #f0f0f0;">
+                        <h4 style="color: #00bcd4; font-size: 22px; margin-bottom: 15px;">Cloud-Native Architecture</h4>
+                        <p style="color: #666; font-size: 15px; line-height: 1.7;">Powered by Firebase, our ERP offers unparalleled speed for international users. Being web-based, any device with an internet connection becomes a secure window into your factory’s heart.</p>
+                    </div>
+                    <div style="background: white; padding: 35px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border: 1px solid #f0f0f0;">
+                        <h4 style="color: #00bcd4; font-size: 22px; margin-bottom: 15px;">Zero-Code Form Builder</h4>
+                        <p style="color: #666; font-size: 15px; line-height: 1.7;">Every department across your global branches is different. Our Dynamic Customization allows users to create their own input forms without writing a single line of code.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="user-guide" style="padding: 100px 10%; background: #f4f7fe;">
+                <div style="max-width: 1000px; margin: 0 auto;">
+                    <h2 style="text-align: center; font-size: 38px; margin-bottom: 20px; font-weight: 800;">Global Operational Guide</h2>
+                    <p style="text-align: center; color: #666; margin-bottom: 60px; font-size: 18px;">Implementing Smart Presentation ERP across your global organization.</p>
+                    <div style="margin-bottom: 40px; background: #fff; padding: 30px; border-radius: 20px;">
+                        <h3 style="color: #1a1a1a; font-size: 24px; margin-bottom: 15px;">1. Onboarding and Identity Management</h3>
+                        <p style="color: #444; line-height: 1.8; font-size: 16px;">Security is paramount for international businesses. The process begins with secure Google OAuth integration, ensuring every entry is logged under a verified identity. Define global hierarchies with roles such as "Department Manager" and "Executive Viewer" to maintain strict corporate confidentiality.</p>
+                    </div>
+                    <div style="margin-bottom: 40px; background: #fff; padding: 30px; border-radius: 20px;">
+                        <h3 style="color: #1a1a1a; font-size: 24px; margin-bottom: 15px;">2. Master Configuration and Mapping</h3>
+                        <p style="color: #444; line-height: 1.8; font-size: 16px;">Create a "Digital Factory Map" for each of your international units. Define lines, machines, and production targets. Our "Bulk Import" features make it easy to transition from legacy systems into our smart global ecosystem within minutes.</p>
+                    </div>
+                    <div style="margin-bottom: 40px; background: #fff; padding: 30px; border-radius: 20px;">
+                        <h3 style="color: #1a1a1a; font-size: 24px; margin-bottom: 15px;">3. Data Input Lifecycle and Validation</h3>
+                        <p style="color: #444; line-height: 1.8; font-size: 16px;">Supervisors worldwide can enter data using an interface optimized for speed. "Smart Validation" prevents human error by flagging entries that exceed machine capacity. Data undergoes a three-way sync, updating cloud databases and management dashboards simultaneously.</p>
+                    </div>
+                    <div style="margin-bottom: 40px; background: #fff; padding: 30px; border-radius: 20px;">
+                        <h3 style="color: #1a1a1a; font-size: 24px; margin-bottom: 15px;">4. Advanced Reporting and Global Documentation</h3>
+                        <p style="color: #444; line-height: 1.8; font-size: 16px;">Generate professional reports, monthly summaries, and growth charts with a single click. Every report is "Print-Ready" in standard A4 size, ideal for emailing to global buyers or presenting at international board meetings.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="policy-deep-dive" style="padding: 80px 10%; background: #ffffff;">
+                 <div style="max-width: 950px; margin: 0 auto; border: 1px solid #eee; padding: 50px; border-radius: 30px; line-height: 1.9; color: #555;">
+                    <h2 style="text-align: center; color: #1a1a1a; font-weight: 800; margin-bottom: 40px;">Legal and Privacy Standards</h2>
+                    <h4 id="privacy" style="color: #333; font-weight: 700;">Data Integrity and Protection Policy</h4>
+                    <p>Smart Presentation ERP is committed to international standards of data integrity. We utilize end-to-end encryption for all factory metrics. Our servers are hosted on enterprise-grade infrastructure with 99.9% uptime. We guarantee your production formulas and figures are protected as trade secrets and never shared with third parties.</p>
+                    <h4 style="color: #333; font-weight: 700; margin-top: 30px;">Transparency in Advertising and Cookies</h4>
+                    <p>We partner with Google AdSense and strictly adhere to the General Data Protection Regulation (GDPR) and CCPA. Our site uses cookies to enhance user experience and serve relevant advertisements. Users have full control over their settings and can opt-out via Google’s ad settings.</p>
+                    <h4 id="terms" style="color: #333; font-weight: 700; margin-top: 30px;">Service Level Agreement (SLA)</h4>
+                    <p>Our commitment to our global clients is unwavering. We provide 24/7 technical support for critical system issues. We ensure our ERP is optimized for various bandwidth situations common in industrial areas worldwide. Regular updates ensure your software always meets modern security and feature standards.</p>
+                 </div>
+            </section>
+
+            <div id="landingContact" style="margin: 60px 10%; padding: 80px 60px; background: #ffffff; color: #1a1a1a; border-radius: 40px; text-align: center; border: 1px solid #eee; box-shadow: 0 15px 40px rgba(0,0,0,0.05);">
+    
+                <h2 style="margin-bottom: 25px; color: #1a1a1a; font-size: 34px; font-weight: 800;">Get In Touch</h2>
+                <p style="font-size: 19px; color: #666; margin-bottom: 45px; max-width: 700px; margin-left: auto; margin-right: auto;">
+                    Our team of experts is ready to help you digitize your global factory operations. Click below to contact us directly.
+                </p>
+
+                <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px;">
+                    <a href="https://wa.me/8801740729090" target="_blank" style="text-decoration: none; color: #1a1a1a; border: 1px solid #ddd; padding: 15px 30px; border-radius: 12px; font-size: 17px; font-weight: 600; transition: 0.3s; display: flex; align-items: center; gap: 10px;" onmouseover="this.style.background='#f9f9f9'; this.style.borderColor='#bbb'" onmouseout="this.style.background='transparent'; this.style.borderColor='#ddd'">
+                        <span>💬</span> WhatsApp: +8801740729090
+                    </a>
+                    <a href="tel:+8801740729090" style="text-decoration: none; color: #1a1a1a; border: 1px solid #ddd; padding: 15px 30px; border-radius: 12px; font-size: 17px; font-weight: 600; transition: 0.3s; display: flex; align-items: center; gap: 10px;" onmouseover="this.style.background='#f9f9f9'; this.style.borderColor='#bbb'" onmouseout="this.style.background='transparent'; this.style.borderColor='#ddd'">
+                        <span>📞</span> Call: +8801740729090
+                    </a>
+                    <a href="mailto:rubelplan4@gmail.com" style="text-decoration: none; color: #1a1a1a; border: 1px solid #ddd; padding: 15px 30px; border-radius: 12px; font-size: 17px; font-weight: 600; transition: 0.3s; display: flex; align-items: center; gap: 10px;" onmouseover="this.style.background='#f9f9f9'; this.style.borderColor='#bbb'" onmouseout="this.style.background='transparent'; this.style.borderColor='#ddd'">
+                        <span>📧</span> Email: rubelplan4@gmail.com
+                    </a>
+                </div>
+
+                <div style="margin-top: 55px; padding-top: 30px; border-top: 1px solid #f0f0f0;">
+                    <p style="font-size: 14px; color: #999; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; font-weight: 600;">Corporate HQ</p>
+                    <p style="font-size: 18px; color: #333; font-weight: 500;">Vatpara, Pachdona, Narsingdi, Bangladesh</p>
+                    <p style="font-size: 14px; color: #aaa; margin-top: 15px;">Providing global industrial support 24/7.</p>
+                </div>
+
+            </div>
+        </main>
+
+        <aside style="width: 288px; flex-shrink: 0; padding: 20px 10px; background: #fff; border-left: 1px solid #f0f0f0; position: sticky; top: 80px; align-self: flex-start;">
+            <span style="display: block; font-size: 11px; color: #bbb; margin-bottom: 10px; letter-spacing: 1px; text-transform: uppercase; font-weight: 600; text-align: center;">Advertisement</span>
+            <div style="min-height: 600px;">
+                <ins class="adsbygoogle" style="display:block" data-ad-format="fluid" data-ad-layout-key="-fb+5w+4e-db+86" data-ad-client="ca-pub-8648299603771033" data-ad-slot="9606648113"></ins>
+                <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+            </div>
+        </aside>
+
+    </div>
+
+    <footer style="background: #ffffff; padding: 60px 10%; color: #666; border-top: 1px solid #eee;">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; margin-bottom: 50px;">
+            <div>
+                <h3 style="color: #1a1a1a; margin-bottom: 20px;">Smart Presentation ERP</h3>
+                <p style="font-size: 14px; line-height: 1.6;">The ultimate industrial management software designed to scale with your global business. From raw material tracking to final product shipment.</p>
+            </div>
+            <div>
+                <h3 style="color: #1a1a1a; margin-bottom: 20px;">Quick Navigation</h3>
+                <ul style="list-style: none; padding: 0; font-size: 14px; line-height: 2;">
+                    <li><a href="#about" style="color: #666; text-decoration: none;">Industrial Overview</a></li>
+                    <li><a href="#presentation-module" style="color: #666; text-decoration: none;">Slide Presentation</a></li>
+                    <li><a href="#excel-module" style="color: #666; text-decoration: none;">Excel Integration</a></li>
+                    <li><a href="#user-guide" style="color: #666; text-decoration: none;">Operational Manual</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 style="color: #1a1a1a; margin-bottom: 20px;">Legal & Info</h3>
+                <ul style="list-style: none; padding: 0; font-size: 14px; line-height: 2;">
+                    <li><a href="#policy-deep-dive" style="color: #00bcd4; text-decoration: none; font-weight: bold;">Privacy Policy</a></li>
+                    <li><a href="#policy-deep-dive" style="color: #00bcd4; text-decoration: none; font-weight: bold;">Terms of Service</a></li>
+                    <li><a href="#about" style="color: #00bcd4; text-decoration: none; font-weight: bold;">About Us</a></li>
+                    <li><a href="#landingContact" style="color: #666; text-decoration: none;">Contact Support</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 style="color: #1a1a1a; margin-bottom: 20px;">Industry Focus</h3>
+                <ul style="list-style: none; padding: 0; font-size: 14px; line-height: 2;">
+                    <li>Knitting & Weaving Units</li>
+                    <li>Dyeing & Finishing Plants</li>
+                    <li>Garment Manufacturing (RMG)</li>
+                    <li>Global Textile Conglomerates</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div style="text-align: center; font-size: 13px; border-top: 1px solid #eee; padding-top: 30px;">
+            <p>&copy; 2026 Smart Presentation ERP Global - All Rights Reserved.</p>
+            <p>Designed, Developed, and Maintained by <strong>Rubel Ahmed</strong></p>
+            <p style="margin-top: 10px; color: #aaa;">Empowering the backbone of the Global Economy.</p>
+        </div>
+    </footer>
+</div>
+    <div id="appDashboard" class="hidden" style="display: flex; width: 100%; height: 100vh; overflow: hidden;">
+    
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-title">Presentation</div>
+        <div class="nav-item active" onclick="switchTab('dashboard', event)">Dashboard</div>
+        <div class="nav-item" onclick="switchTab('report', event)">KPI</div>
+        <div class="nav-item" onclick="switchTab('analytics', event)">Analytics</div>
+        
+
+        <div style="margin-top: 1in; padding: 0 10px; width: 100%; box-sizing: border-box;">
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-8648299603771033"
+                 data-ad-slot="7550173834"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>
+                 (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+    </div>
+
+    <div class="main-content" style="display: flex; flex-direction: column; flex: 1; overflow: hidden;">
+        <header class="header">
+            <div style="display:flex; align-items:center;">
+                <button class="menu-btn" onclick="toggleSidebar(event)">☰</button>
+                <h3 id="viewTitle">Dashboard</h3>
+            </div>
+            <div style="display:flex; gap:15px; align-items:center;">
+                <select id="fSecFilter" class="hidden" onchange="updatePresentation()" style="padding: 10px; border-radius: 20px; border: 1px solid #ddd;"></select>
+                <div style="display:flex; align-items:center; gap:8px;">
+                    <input type="checkbox" id="monthEnable" checked onchange="handleFilterUpdate()" style="width:18px; height:18px; cursor:pointer;">
+                    <div id="monthContainer" style="display:flex; gap:5px; background:#fff; border-radius:30px; padding:5px; border:1px solid #eee;"></div>
+                </div>
+                <select id="fYear" onchange="handleFilterUpdate()" style="padding: 10px; border-radius: 20px; border: 1px solid #ddd;"></select>
+            </div>
+            <div id="auth-container"></div>
+        </header>
+
+        <div id="dashboardTopAction" style="position: absolute; bottom: 30px; right: 30px; z-index: 10;">
+            <button onclick="openModal('createModal')" 
+                    title="Create New Section"
+                    style="width: 60px; height: 60px; background: #00bcd4; color: white; border: none; border-radius: 50%; cursor: pointer; font-size: 35px; font-weight: 300; display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 20px rgba(0, 188, 212, 0.4); transition: 0.3s; padding: 0; line-height: 1;" 
+                    onmouseover="this.style.transform='scale(1.1) rotate(90deg)'; this.style.backgroundColor='#00acc1'; this.style.boxShadow='0 8px 25px rgba(0, 188, 212, 0.5)';" 
+                    onmouseout="this.style.transform='scale(1) rotate(0deg)'; this.style.backgroundColor='#00bcd4'; this.style.boxShadow='0 6px 20px rgba(0, 188, 212, 0.4)';"
+            >
+                +
+            </button>
+        </div>
+
+        <div id="dashboardView" style="padding:25px; overflow-y:auto; display:flex; flex-wrap:wrap; align-content: flex-start; gap:20px; flex: 1;"></div>
+
+        <div id="reportView" class="hidden">
+            <div class="report-left">
+                <div style="display:flex; gap:20px;">
+                    <div id="overviewCard" class="card" style="flex:1; border-left:10px solid var(--primary);"></div>
+                    <div id="averageCard" class="card" style="flex:1; border-left:10px solid #ff9800;"></div>
+                </div>
+                <div class="chart-container"><canvas id="productionChart"></canvas></div>
+            </div>
+            <div id="presGroupContainer" class="report-right"></div>
+        </div>
+
+        <div id="analyticsView" class="hidden" style="padding: 20px; height: 100%; overflow-y: auto; background-color: #f4f7fe;">
+            <div class="report-card" style="background: white; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border: 1px solid #e0e6ed; display: flex; flex-direction: column; max-height: 95vh; overflow: hidden;">
+                <div class="no-print" style="padding: 15px 25px; border-bottom: 1px solid #eee; display: flex; justify-content: space-between; align-items: center; background: #fff;">
+                    <span style="color: #888; font-size: 14px;">💡 টিপস: টাইটেল বা সিগনেচারে ক্লিক করে সরাসরি নাম পরিবর্তন করুন।</span>
+                    <div style="display: flex; gap: 10px;">
+                        <button onclick="downloadExcel('analytics')" style="padding: 8px 18px; border-radius: 8px; border: 1px solid #ddd; background: #fff; cursor: pointer; font-weight: 500;">Download Excel</button>
+                        <button onclick="window.print()" style="padding: 8px 18px; border-radius: 8px; background: #00bcd4; color: white; border: none; cursor: pointer; font-weight: 600;">Print Report</button>
+                    </div>
+                </div>
+
+                <div id="printWrapper" style="overflow: auto; padding: 40px; flex: 1;">
+                    <div id="printableAreaAnalytics" style="min-width: 1100px; margin: auto;">
+                        <div style="text-align: center; margin-bottom: 40px; position: relative;">
+                            <h1 id="editableCompany" contenteditable="true" style="margin: 0; color: #555; font-size: 34px; font-weight: 600; outline: none; border: 1px dashed transparent; transition: 0.3s; display: inline-block; padding: 0 10px;" onmouseover="this.style.border='1px dashed #00bcd4'" onmouseout="this.style.border='1px dashed transparent'">Company Name</h1>
+                            <div style="margin-top: 10px;">
+                                <p id="editableReportName" contenteditable="true" style="margin: 0; color: #555; font-size: 22px; font-weight: 400; outline: none; border: 1px dashed transparent; transition: 0.3s; display: inline-block; padding: 2px 10px;" onmouseover="this.style.border='1px dashed #00bcd4'" onmouseout="this.style.border='1px dashed transparent'">Annual Production Performance Analytics</p>
+                            </div>
+                        </div>
+                        <table id="analyticsTable" style="width: 100%; border-collapse: collapse; font-size: 15px; border: 1px solid #000; color: #000;">
+                            <thead>
+                                <tr style="background-color: #f9fafb;">
+                                    <th style="border: 1px solid #000; padding: 12px; font-weight: bold;">Section</th>
+                                    <th style="border: 1px solid #000; padding: 12px; font-weight: bold;">Categories</th>
+                                    <th style="border: 1px solid #000; padding: 12px; font-weight: bold; text-align: left;">Item Name</th>
+                                    <th style="border: 1px solid #000; padding: 8px;">Jan</th>
+                                    <th style="border: 1px solid #000; padding: 8px;">Feb</th>
+                                    <th style="border: 1px solid #000; padding: 8px;">Mar</th>
+                                    <th style="border: 1px solid #000; padding: 8px;">Apr</th>
+                                    <th style="border: 1px solid #000; padding: 8px;">May</th>
+                                    <th style="border: 1px solid #000; padding: 8px;">Jun</th>
+                                    <th style="border: 1px solid #000; padding: 8px;">Jul</th>
+                                    <th style="border: 1px solid #000; padding: 8px;">Aug</th>
+                                    <th style="border: 1px solid #000; padding: 8px;">Sep</th>
+                                    <th style="border: 1px solid #000; padding: 8px;">Oct</th>
+                                    <th style="border: 1px solid #000; padding: 8px;">Nov</th>
+                                    <th style="border: 1px solid #000; padding: 8px;">Dec</th>
+                                    <th style="border: 1px solid #000; padding: 12px; background: #f0f0f0;">Total</th>
+                                    <th style="border: 1px solid #000; padding: 12px; background: #f0f0f0;">Target</th>
+                                    <th style="border: 1px solid #000; padding: 12px; background: #f0f0f0;">Achieved</th>
+                                    <th style="border: 1px solid #000; padding: 12px; background: #f0f0f0;">Achi%</th>
+                                </tr>
+                            </thead>
+                            <tbody id="analyticsBody"></tbody>
+                        </table>
+                        <div id="reportFooterAnalytics" style="display: flex; justify-content: space-between; margin-top: 100px; padding: 0 30px;">
+                            <div style="text-align: center; width: 220px;">
+                                <div style="border-top: 1.5px solid #000; margin-bottom: 8px;"></div>
+                                <p contenteditable="true" style="margin: 0; font-size: 18px; font-weight: 600; outline: none; border-radius: 4px;">Prepared By</p>
+                                <p contenteditable="true" style="margin: 0; font-size: 14px; color: #777; outline: none;">(Name & Date)</p>
+                            </div>
+                            <div style="text-align: center; width: 220px;">
+                                <div style="border-top: 1.5px solid #000; margin-bottom: 8px;"></div>
+                                <p contenteditable="true" style="margin: 0; font-size: 18px; font-weight: 600; outline: none; border-radius: 4px;">Checked By</p>
+                                <p contenteditable="true" style="margin: 0; font-size: 14px; color: #777; outline: none;">(Name & Date)</p>
+                            </div>
+                            <div style="text-align: center; width: 220px;">
+                                <div style="border-top: 1.5px solid #000; margin-bottom: 8px;"></div>
+                                <p contenteditable="true" style="margin: 0; font-size: 18px; font-weight: 600; outline: none; border-radius: 4px;">Authorized Signature</p>
+                                <p contenteditable="true" style="margin: 0; font-size: 14px; color: #777; outline: none;">(Seal & Sign)</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="entryModal" class="modal">
+        <div class="modal-content">
+            <span class="close-icon" onclick="closeModal('entryModal')">&times;</span>
+            <h3 id="modalSecName" style="text-align:center; margin-bottom:15px;"></h3>
+            <input type="date" id="prodDate" onchange="fetchDataByDate()" style="width:100%; padding:10px; margin-bottom:15px; border-radius:10px; border:1px solid #ddd;">
+            
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+                <label id="labelT_Entry" style="font-weight:bold;">Target</label>
+                <input type="number" id="tVal" class="val-in" oninput="calcTotal()">
+            </div>
+
+            <div id="dynamicContainer"></div>
+
+            <button onclick="toggleMasterMode()" style="width:100%; padding:8px; margin-top:15px; background:#f0f4f9; border:1px dashed var(--primary); border-radius:10px; cursor:pointer;">Format-Setup</button>
+            
+            <div id="masterActions" class="hidden" style="margin-top:10px; background:#fff8f0; padding:10px; border-radius:10px; border:1px solid #ff9800;">
+                <button onclick="addTable()" style="width:100%; padding:8px; margin-bottom:10px; cursor:pointer; background:#fff; border:1px solid #ddd; border-radius:5px;">+ Add Table</button>
+                <div id="masterItemList"></div>
+            </div>
+
+            <div style="background:#e0f7fa; padding:15px; border-radius:12px; margin-top:15px;">
+                <div style="display:flex; justify-content:space-between; align-items:center;">
+                    <label id="labelA_Entry" style="font-weight:bold;">TOTAL ACHIEVED</label>
+                    <input type="number" id="aVal" class="val-in" style="background:#fff;" readonly>
+                </div>
+                <textarea id="prodNote" class="note-area" placeholder="Production note..." style="width:100%; height:60px; margin-top:10px; padding:10px; border:1px solid #ddd; border-radius:10px; resize:none;"></textarea>
+            </div>
+            <button class="save-btn" onclick="saveData()">Saved</button>
+        </div>
+    </div>
+
+    <div id="createModal" class="modal">
+        <div class="modal-content">
+            <span class="close-icon" onclick="closeModal('createModal')">&times;</span>
+            <h3>Create New Section</h3>
+            <input type="text" id="newSecName" placeholder="Enter Section Name" style="width:100%; margin-bottom:10px; padding:8px;">
+            <div style="display:flex; gap:5px; margin-bottom:10px;">
+                <input type="text" id="labelT" value="Target" title="Label for Target" style="width:33%; padding:5px; font-size:12px; border:1px solid #ddd; border-radius:5px;">
+                <input type="text" id="labelA" value="Achieved" title="Label for Achieved" style="width:33%; padding:5px; font-size:12px; border:1px solid #ddd; border-radius:5px;">
+                <input type="text" id="labelB" value="Balance" title="Label for Balance" style="width:33%; padding:5px; font-size:12px; border:1px solid #ddd; border-radius:5px;">
+            </div>
+            <button class="save-btn" onclick="createSection()">CREATE</button>
+        </div>
+    </div>
+
+    <div id="shareModal" class="modal">
+        <div class="modal-content">
+            <span class="close-icon" onclick="closeModal('shareModal')">&times;</span>
+            <h3 id="sharingSecName">Share Section</h3>
+            <div style="display:flex; gap:5px; margin:15px 0;">
+                <input type="email" id="shareEmail" placeholder="Gmail Address" style="flex:1; padding:10px; border:1px solid #ddd; border-radius:10px;">
+                <select id="shareRole" style="padding:10px; border-radius:10px; border:1px solid #ddd;">
+                    <option value="viewer">Viewer</option>
+                    <option value="admin">Admin</option>
+                </select>
+            </div>
+            <button class="save-btn" onclick="addPermission()">Add User</button>
+            <div id="shareList" style="margin-top:20px;"></div>
+        </div>
+    </div>
+
+    <div id="groupDetailsModal" class="modal">
+        <div id="printableAreaGroup" class="a4-container">
+            <div class="modal-header no-print" style="display:flex; justify-content:flex-end; gap:10px; padding:15px; border-bottom:1px solid #eee;">
+                <button onclick="downloadExcel('group')" style="padding:8px 15px; cursor:pointer;">Excel</button>
+                <button onclick="window.print()" style="padding:8px 15px; cursor:pointer;">Print</button>
+                <button onclick="closeModal('groupDetailsModal')" style="padding:8px 15px; cursor:pointer;">Close</button>
+            </div>
+            <div class="a4-page">
+                <div style="text-align: center; margin-bottom: 40px; font-family: sans-serif;">
+                    <h1 id="groupCompanyName" contenteditable="true" style="margin: 0; color: #555; font-size: 34px; font-weight: 600; outline: none; border: 1px dashed transparent; display: inline-block; padding: 0 10px;">Amanat Shah Fabrics Ltd.</h1>
+                    <div style="margin-top: 5px;">
+                        <p id="groupCompanyAddress" contenteditable="true" style="margin: 0; color: #555; font-size: 18px; outline: none; display: inline-block; padding: 2px 10px;">Vatpara, Pachdona, Narsingdi</p>
+                    </div>
+                    <div style="margin-top: 10px;">
+                        <h3 id="reportTitle" contenteditable="true" style="margin: 0; color: #555; font-size: 22px; outline: none; display: inline-block; padding: 2px 10px;">Production Report</h3>
+                    </div>
+                </div>
+                <table id="reportTableExcel" class="report-table" style="width: 100%;">
+                    <thead><tr id="dynamicHeadings"></tr></thead>
+                    <tbody id="groupDetailBody"></tbody>
+                    <tfoot id="groupDetailFoot"></tfoot>
+                </table>
+                </div>
+        </div>
+    </div>
+
+    <div id="overviewDetailsModal" class="modal">
+        <div id="printableAreaOverview" class="a4-container">
+            <div class="modal-header no-print" style="padding: 15px; display: flex; justify-content: flex-end; gap: 10px; border-bottom: 1px solid #eee;">
+                <button onclick="downloadExcel('overview')" style="padding:8px 18px; cursor:pointer;">Excel</button>
+                <button onclick="window.print()" style="padding:8px 18px; cursor:pointer;">Print</button>
+                <button onclick="closeModal('overviewDetailsModal')" style="padding:8px 18px; cursor:pointer;">Close</button>
+            </div>
+            <div class="a4-page">
+                <div style="text-align: center; margin-bottom: 40px;">
+                    <h1 id="overviewCompanyName" contenteditable="true" style="margin: 0; color: #555; font-size: 34px; font-weight: 600; outline: none; display: inline-block;">Company Name</h1>
+                    <p id="overviewCompanyAddress" contenteditable="true" style="margin: 5px 0; color: #555; font-size: 18px; outline: none;">123 Tech Avenue, Suite 4B, Dhaka, Bangladesh.</p>
+                    <h2 contenteditable="true" style="margin: 10px 0; color: #555; font-size: 26px; outline: none;">Production Report</h2>
+                </div>
+                <div style="text-align: left; margin-bottom: 10px;">
+                    <span id="rpSection" style="font-size: 15px; color: #000;">Section: Delivery | Group: Finished</span>
+                </div>
+                <table class="report-table" id="excelTable">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Target</th>
+                            <th>Achieved</th>
+                            <th>Achi%</th>
+                            <th>Note</th>
+                        </tr>
+                    </thead>
+                    <tbody id="ovDetailBody"></tbody>
+                    <tfoot id="ovDetailFoot"></tfoot>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+
+<script>
+    function updateUIVisibility(user) {
+        const landing = document.getElementById('landingPage');
+        const dashboard = document.getElementById('appDashboard');
+        
+        if (user) {
+            if(landing) landing.style.display = 'none';
+            dashboard.style.display = 'flex';
+            dashboard.classList.remove('hidden');
+        } else {
+            if(landing) landing.style.display = 'block';
+            dashboard.style.display = 'none';
+            dashboard.classList.add('hidden');
+        }
+    }
+</script>
+
+</body>
+    
+<script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+    import { 
+        getAuth, 
+        onAuthStateChanged, 
+        signInWithPopup, 
+        signInWithRedirect,
+        getRedirectResult,
+        GoogleAuthProvider, 
+        signOut 
+    } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+    import { 
+        getFirestore, 
+        doc, 
+        setDoc, 
+        getDoc, 
+        updateDoc, 
+        collection, 
+        onSnapshot,    
+        getDocs, 
+        addDoc, 
+        deleteField, 
+        deleteDoc,
+        query, 
+        where, 
+        collectionGroup, 
+        arrayUnion,      
+        arrayRemove      
+    } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
+    // Firebase Configuration
+    const firebaseConfig = { 
+        apiKey: "AIzaSyAxDQCEsgzJU9L2XJPj5jeLPN6CV2lR3EY", 
+        authDomain: "smartproduction-erp.firebaseapp.com", 
+        projectId: "smartproduction-erp", 
+        appId: "1:794138225480:web:1be841f305c5fe6e12617d" 
+    };
+    
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+    const auth = getAuth(app);
+    const prov = new GoogleAuthProvider();
+
+    // Global Variables
+    let user = null, myChart = null, avgPieChart = null, persistentSectionID = "";
+    let selectedMonth = (new Date().getMonth() + 1);
+    const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+    const palette = ["#00bcd4", "#ff9800", "#e91e63", "#4caf50", "#9c27b0", "#3f51b5", "#f44336", "#795548", "#607d8b", "#ff5722", "#009688", "#ffc107"];
+
+    // গ্লোবাল ভেরিয়েবল
+    window.currentSecOwner = null; 
+    window.currentSecID = "";
+    window.isMasterMode = false;
+    window.isRendering = false;
+    window.allSections = [];
+
+    // UI Helpers
+    const showSpinner = (s) => {
+        const spinner = document.getElementById('loadingSpinner');
+        if(spinner) spinner.style.display = s ? 'flex' : 'none';
+    }
+
+    // Auth State Observer
+    onAuthStateChanged(auth, u => {
+        user = u;
+        const authContainer = document.getElementById('auth-container');
+        const landingPage = document.getElementById('landingPage');
+        const appDashboard = document.getElementById('appDashboard');
+        
+        if(u) {
+            if(landingPage) landingPage.style.display = 'none';
+            if(appDashboard) {
+                appDashboard.style.display = 'flex';
+                appDashboard.classList.remove('hidden');
+            }
+
+            if(authContainer) {
+                authContainer.innerHTML = `
+                    <div class="user-profile-chip" onclick="logoutUser()" title="Click to Logout Immediately">
+                        <img src="${u.photoURL}" alt="User">
+                        <div class="user-info-text no-print">
+                            <span class="u-name-text">${u.displayName}</span>
+                            <span class="u-email-text">${u.email}</span>
+                        </div>
+                    </div>
+                `;
+            }
+            setupFilters(); 
+            loadDashboard();
+        } else {
+            if(landingPage) landingPage.style.display = 'block';
+            if(appDashboard) {
+                appDashboard.style.display = 'none';
+                appDashboard.classList.add('hidden');
+            }
+
+            if(authContainer) {
+                authContainer.innerHTML = `
+                    <button onclick="loginUser()" style="background:#4285F4; color:white; border:none; padding:10px 22px; border-radius:30px; cursor:pointer; font-weight:600; display:flex; align-items:center; gap:10px; box-shadow: 0 4px 10px rgba(66,133,244,0.25);">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M12.48 10.92v3.28h7.84c-.24 1.84-.909 3.292-2.09 4.413-1.177 1.108-2.81 2.03-5.75 2.03-4.574 0-8.38-3.714-8.38-8.288 0-4.574 3.806-8.288 8.38-8.288 2.504 0 4.41.986 5.76 2.276l2.314-2.314C18.497 2.012 15.75 1 12.48 1 6.645 1 2 5.645 2 11.48s4.645 10.48 10.48 10.48c3.15 0 5.534-1.036 7.425-3.008 1.95-1.95 2.57-4.7 2.57-6.95 0-.46-.04-.91-.11-1.35h-9.91z"/></svg>
+                        Sign In with Google
+                    </button>
+                `;
+            }
+        }
+    });
+
+    // Authentication Functions (Updated to handle Popup Blocker)
+    window.loginUser = () => {
+        signInWithPopup(auth, prov).catch(err => {
+            if (err.code === 'auth/popup-blocked' || err.code === 'auth/cancelled-popup-request') {
+                console.warn("Popup blocked, trying redirect...");
+                signInWithRedirect(auth, prov);
+            } else {
+                console.error("Login Error:", err);
+            }
+        });
+    };
+
+    // Handle Redirect Result
+    getRedirectResult(auth).catch(err => console.error("Redirect Error:", err));
+
+    window.logoutUser = () => signOut(auth).catch(err => console.error("Logout Error:", err));
+
+    // Navigation & Modal Functions
+    window.toggleSidebar = (e) => { 
+        e.stopPropagation(); 
+        const sidebar = document.getElementById('sidebar');
+        if(sidebar) sidebar.classList.toggle('collapsed'); 
+    };
+
+  window.handleFilterUpdate = () => { 
+    loadDashboard(); 
+    
+    // আপনার আগের লজিক
+    if (document.getElementById('reportView') && !document.getElementById('reportView').classList.contains('hidden')) updatePresentation(); 
+    if (document.getElementById('analyticsView') && !document.getElementById('analyticsView').classList.contains('hidden')) loadAnalytics();
+
+    // এটি আপডেট করুন
+    const selections = {
+        Sizing: false,
+        Month: selectedMonth, // বর্তমানে কোন মাস সিলেক্ট করা আছে
+        User: user ? user.displayName : 'Guest' // কে আপডেট করছে
+    };
+
+    console.log("Selections updated:", selections);
+};
+
+    // --- ট্যাব এবং মডাল ফাংশনসমূহ ---
+    window.switchTab = (t, e) => { 
+        document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active')); 
+        if(e) e.currentTarget.classList.add('active'); 
+        
+        const dashboardView = document.getElementById('dashboardView');
+        const reportView = document.getElementById('reportView');
+        const analyticsView = document.getElementById('analyticsView');
+        const fSecFilter = document.getElementById('fSecFilter');
+        const topAction = document.getElementById('dashboardTopAction');
+
+        if(dashboardView) dashboardView.style.display = (t === 'dashboard' ? 'flex' : 'none');
+        if(reportView) reportView.classList.toggle('hidden', t !== 'report');
+        if(analyticsView) analyticsView.classList.toggle('hidden', t !== 'analytics');
+        if(fSecFilter) fSecFilter.classList.toggle('hidden', t !== 'report'); 
+
+        if (topAction) topAction.style.display = (t === 'dashboard' ? 'block' : 'none');
+
+        const viewTitle = document.getElementById('viewTitle');
+        if(viewTitle) {
+            viewTitle.innerText = 
+                t === 'dashboard' ? 'Dashboard' : 
+                t === 'report' ? 'KPI Report' : 
+                t === 'analytics' ? 'Analytics' : '';
+        }
+
+        if(t === 'report' && typeof updatePresentation === 'function') updatePresentation(); 
+        if(t === 'analytics' && typeof loadAnalytics === 'function') loadAnalytics();
+    };
+
+   // --- Function to open popup on dashboard card click ---
+    window.openEntryModal = (id, name, owner) => { 
+        window.currentSecID = id;
+        window.currentSecOwner = owner; 
+        const modal = document.getElementById('entryModal');
+        if(modal) {
+            modal.style.display = 'block';
+            if(document.getElementById('entryModalTitle')) {
+                document.getElementById('entryModalTitle').innerText = `Data Entry: ${name}`;
+            }
+            if(document.getElementById('prodDate')) {
+                document.getElementById('prodDate').valueAsDate = new Date();
+            }
+        }
+        if (typeof loadSectionData === 'function') loadSectionData(id, owner);
+    };
+
+    window.openModal = (id) => { 
+        const modal = document.getElementById(id);
+        if(modal) {
+            modal.style.display = 'block';
+            if(id === 'entryModal' && document.getElementById('prodDate')) {
+                document.getElementById('prodDate').valueAsDate = new Date();
+            }
+        }
+    };
+
+    window.closeModal = (id) => { 
+        const modal = document.getElementById(id);
+        if(modal) modal.style.display = 'none'; 
+        window.isMasterMode = false; 
+        const masterActions = document.getElementById('masterActions');
+        if(masterActions) masterActions.classList.add('hidden'); 
+    };
+
+    window.closeAllMenus = () => { 
+        document.querySelectorAll('.dot-menu').forEach(m => m.style.display = 'none'); 
+    };
+
+    window.toggleDotMenu = (e, id) => { 
+        e.stopPropagation(); 
+        closeAllMenus(); 
+        const menu = document.getElementById(`menu-${id}`);
+        if(menu) menu.style.display = 'block'; 
+    };
+
+    window.saveData = async () => {
+    // 1. Find the current section and its data
+    const section = allSections.find(s => s.id === currentSecID);
+    if (!section) {
+        console.error("Section not found!");
+        return;
+    }
+
+    // 2. Permission Check
+    const isOwner = section.owner === user.email;
+    const userKey = user.email.replace(/\./g, '_dot_'); 
+    
+    // Role check logic
+    let userRole = 'viewer'; 
+    if (isOwner) {
+        userRole = 'admin';
+    } else if (section.roles && section.roles[userKey]) {
+        // Converting the role from database to lowercase
+        userRole = section.roles[userKey].toLowerCase();
+    }
+
+    // 3. Strict Check: If user is not 'admin', 'editor', or 'owner', save will not proceed
+    const hasWriteAccess = isOwner || userRole === 'admin' || userRole === 'editor';
+
+    if (!hasWriteAccess) {
+        Swal.fire({
+            icon: 'error',
+            title: 'No Permission!',
+            text: 'You are a viewer. You do not have permission to save data.',
+            confirmButtonColor: '#d33'
+        });
+        return; 
+    }
+
+    // 4. Data will be saved only if access is granted
+    showSpinner(true);
+    try {
+        const date = document.getElementById('prodDate').value;
+        if (!date) {
+            Swal.fire('Error', 'Please select a date', 'error');
+            showSpinner(false);
+            return;
+        }
+
+        const tables = typeof getCurrentTables === 'function' ? getCurrentTables() : [];
+        const payload = {
+            Target: Number(document.getElementById('tVal').value) || 0,
+            Achieved: Number(document.getElementById('aVal').value) || 0,
+            Note: document.getElementById('prodNote')?.value || "",
+            tables: tables,
+            updatedAt: new Date().toISOString()
+        };
+
+        // Save data to the owner's path
+        const dailyRef = doc(db, "user_data", section.owner, "sections", currentSecID, "daily_data", date);
+        await setDoc(dailyRef, payload, { merge: true });
+
+        // Update master configuration (Only for owner or admin)
+        if (isMasterMode && (isOwner || userRole === 'admin')) {
+            const secRef = doc(db, "user_data", section.owner, "sections", currentSecID);
+            await setDoc(secRef, { masterConfig: tables }, { merge: true });
+        }
+
+        closeModal('entryModal');
+        await loadDashboard(); 
+        Swal.fire('Success', 'Data saved successfully.', 'success');
+
+    } catch (e) {
+        console.error("Save error details:", e);
+        // Display error if rejected by Firebase rules
+        Swal.fire('Error', 'Firebase Permission Error: You do not have permission to save this data.', 'error');
+    } finally {
+        showSpinner(false);
+    }
+};
+
+    // --- Filter Setup ---
+    function setupFilters() {
+        const yearSelect = document.getElementById('fYear');
+        if(!yearSelect) return;
+        yearSelect.innerHTML = "";
+        const curYear = new Date().getFullYear();
+        for(let i = 0; i < 3; i++) {
+            let opt = document.createElement('option');
+            opt.value = curYear - i; 
+            opt.innerText = curYear - i;
+            yearSelect.appendChild(opt);
+        }
+
+        const monthCont = document.getElementById('monthContainer');
+        if(!monthCont) return;
+        monthCont.innerHTML = "";
+        monthNames.forEach((m, i) => {
+            const btn = document.createElement('div');
+            btn.innerText = m;
+            btn.style.cssText = `padding:5px 10px; cursor:pointer; border-radius:15px; font-size:12px; ${i + 1 === selectedMonth ? 'background:var(--primary); color:white;' : ''}`;
+            btn.onclick = () => {
+                selectedMonth = i + 1;
+                Array.from(monthCont.children).forEach(c => { c.style.background = "none"; c.style.color = "black"; });
+                btn.style.background = "var(--primary)"; btn.style.color = "white";
+                handleFilterUpdate();
+            };
+            monthCont.appendChild(btn);
+        });
+    }
+window.loadDashboard = async () => {
+    if (!user) return;
+    showSpinner(true);
+
+    try {
+        const year = document.getElementById('fYear').value;
+        const monthEnabled = document.getElementById('monthEnable').checked;
+        const prefix = monthEnabled ? `${year}-${selectedMonth.toString().padStart(2, '0')}` : `${year}`;
+
+        if (typeof onSnapshot === 'undefined') {
+            throw new Error("onSnapshot is not defined. Please check your imports.");
+        }
+
+        // Real-time listener (For user's own sections)
+        onSnapshot(collection(db, "user_data", user.email, "sections"), async snap => {
+            if (isRendering) return; 
+            isRendering = true;
+
+            const container = document.getElementById('dashboardView');
+            if (!container) {
+                isRendering = false;
+                showSpinner(false);
+                return;
+            }
+
+            let tempSections = [];
+            snap.forEach(d => {
+                if (!d.data().deleted) {
+                    tempSections.push({ id: d.id, ...d.data(), owner: user.email });
+                }
+            });
+
+            // Search for shared sections (Other's data)
+            try {
+                const qShared = query(
+                    collectionGroup(db, "sections"), 
+                    where("sharedWith", "array-contains", user.email)
+                );
+                const sharedSnap = await getDocs(qShared);
+                sharedSnap.forEach(d => {
+                    const data = d.data();
+                    const ownerEmail = d.ref.path.split('/')[1]; 
+                    if (!data.deleted && ownerEmail !== user.email) {
+                        tempSections.push({ id: d.id, ...data, owner: ownerEmail });
+                    }
+                });
+            } catch (e) {
+                console.warn("Shared access issue:", e);
+            }
+
+            // Remove duplicates and sorting
+            const uniqueSections = [];
+            const seenIds = new Set();
+            tempSections.forEach(s => {
+                if (!seenIds.has(s.id)) {
+                    uniqueSections.push(s);
+                    seenIds.add(s.id);
+                }
+            });
+            
+            // Update global variable (Ensures other functions get data)
+            window.allSections = uniqueSections.sort((a, b) => {
+                const nameA = (a.sectionName || a.name || "").toLowerCase();
+                const nameB = (b.sectionName || b.name || "").toLowerCase();
+                return nameA.localeCompare(nameB, undefined, {numeric: true, sensitivity: 'base'});
+            });
+            
+            updateDropdown();
+
+            container.innerHTML = ""; 
+            for (const sec of allSections) {
+                const displayName = sec.sectionName || sec.name || "Untitled";
+                await renderDashCard(sec.id, displayName, prefix, sec.owner);
+            }
+
+            if (typeof window.updatePresentation === "function") {
+                await window.updatePresentation();
+            }
+
+            showSpinner(false);
+            isRendering = false;
+        });
+    } catch (criticalError) {
+        console.error("Critical Load Error:", criticalError);
+        showSpinner(false);
+    }
+};
+
+async function renderDashCard(id, name, prefix, owner) {
+    try {
+        const dailySnap = await getDocs(collection(db, "user_data", owner, "sections", id, "daily_data"));
+        let t = 0, a = 0;
+        dailySnap.forEach(day => { 
+            if(day.id.startsWith(prefix)) { 
+                t += Number(day.data().Target)||0; 
+                a += Number(day.data().Achieved)||0; 
+            } 
+        });
+        
+        const p = t > 0 ? Math.round((a/t)*100) : 0;
+        const section = allSections.find(s => s.id === id);
+        const cardIdx = allSections.findIndex(s => s.id === id);
+        const sectionColor = palette[cardIdx % palette.length] || '#444';
+        
+        const isOwner = owner === user.email;
+        const userKey = user.email.replace(/\./g, '_dot_');
+        
+        // Determine role
+        let userRole = 'viewer'; 
+        if (isOwner) {
+            userRole = 'admin';
+        } else if (section && section.roles && section.roles[userKey]) {
+            userRole = section.roles[userKey].toLowerCase();
+        }
+
+        const lT = section?.labelT || "Target";
+        const lA = section?.labelA || "Achieved";
+        const lB = section?.labelB || "Balance";
+
+        const div = document.createElement('div'); 
+        div.className = "card";
+        div.style.cssText = "animation: fadeIn 0.6s ease; cursor:pointer;";
+        
+        div.onclick = () => { 
+            if (userRole === 'viewer') {
+                return Swal.fire({
+                    icon: 'error',
+                    title: 'Access Denied',
+                    text: 'You are a viewer; you do not have permission to enter data.',
+                    confirmButtonColor: '#d33'
+                });
+            }
+            window.isMasterMode = (userRole === 'admin' || userRole === 'editor');
+            const actions = document.getElementById('masterActions');
+            if(actions) actions.classList.add('hidden'); 
+
+            window.currentSecID = id; 
+            window.currentSecOwner = owner; 
+            
+            const modalTitle = document.getElementById('modalSecName');
+            if(modalTitle) modalTitle.innerText = name; 
+
+            openModal('entryModal'); 
+            if(typeof fetchDataByDate === 'function') fetchDataByDate();
+        };
+
+        // --- Menu Logic: Owners and Admins get Share options ---
+        let menuHtml = "";
+        if (isOwner || userRole === 'admin') {
+            menuHtml += `<p onclick="openShareModal(event, '${id}', '${name}')">Share</p>`;
+        }
+        
+        if (isOwner) {
+            menuHtml += `<p onclick="deleteSection(event, '${id}')" style="color:red;">Delete Section</p>`;
+        } else {
+            menuHtml += `<p onclick="leaveSection(event, '${id}', '${owner}')" style="color:red;">Remove Access</p>`;
+        }
+
+        // Updated font-size to 18px for all elements below
+        div.innerHTML = `
+            <div class="three-dot" onclick="toggleDotMenu(event, '${id}')">⋮</div>
+            <div id="menu-${id}" class="dot-menu">${menuHtml}</div>
+            <div class="card-info">
+                <h2 style="font-size:18px; font-weight:normal; color:${sectionColor}; margin-bottom:10px;">${name}</h2>
+                <div class="stat-row" style="font-size:18px; color:#444; margin-bottom:5px;">
+                    <span>${lT}</span><span class="colon">:</span><span>${t.toLocaleString('en-IN')}</span>
+                </div>
+                <div class="stat-row" style="font-size:18px; color:#444; margin-bottom:5px;">
+                    <span>${lA}</span><span class="colon">:</span><span>${a.toLocaleString('en-IN')}</span>
+                </div>
+                <div class="stat-row" style="font-size:18px; color:#444;">
+                    <span>${lB}</span><span class="colon">:</span><span>${(t-a < 0 ? 0 : t-a).toLocaleString('en-IN')}</span>
+                </div>
+            </div>
+            <div class="circle-box">
+                <svg><circle class="c-bg" cx="55" cy="55" r="45"></circle><circle class="c-val" cx="55" cy="55" r="45" style="stroke:${sectionColor}; stroke-dasharray:283; stroke-dashoffset:283; transition: stroke-dashoffset 1.5s ease-in-out;"></circle></svg>
+                <div class="perc" style="font-size:18px; font-weight:normal; color:#444;">${p}%</div>
+            </div>`;
+
+        document.getElementById('dashboardView').appendChild(div);
+        setTimeout(() => { 
+            const circle = div.querySelector('.c-val'); 
+            if(circle) circle.style.strokeDashoffset = 283 - (283 * p) / 100; 
+        }, 200);
+    } catch (err) { console.error("Card render error:", err); }
+}
+
+function updateDropdown() {
+    const sel = document.getElementById('fSecFilter');
+    if (!sel) return;
+    const currentVal = sel.value;
+    sel.innerHTML = allSections.map(s => {
+        const dName = s.sectionName || s.name || "Untitled";
+        return `<option value="${s.id}" ${s.id === currentVal ? 'selected' : ''}>${dName}</option>`;
+    }).join('');
+}
+
+window.deleteSection = async (e, id) => {
+    if (e) e.stopPropagation();
+    const result = await Swal.fire({
+        title: 'Are you sure?',
+        text: "This section will be permanently deleted!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#d33',
+        cancelButtonColor: '#3085d6',
+        confirmButtonText: 'Yes, delete it!'
+    });
+    
+    if (!result.isConfirmed) return;
+    showSpinner(true);
+    
+    try {
+        await deleteDoc(doc(db, "user_data", user.email, "sections", id));
+        await Swal.fire('Deleted!', 'Section has been deleted.', 'success');
+        await window.loadDashboard();
+    } catch (err) {
+        console.error("Delete Error:", err);
+        Swal.fire('Error!', 'Something went wrong.', 'error');
+    } finally {
+        showSpinner(false);
+    }
+};
+
+window.leaveSection = async (event, id, owner) => {
+    event.stopPropagation(); // Stop card click event
+    
+    const result = await Swal.fire({
+        title: 'Are you sure?',
+        text: "Do you want to remove your access from this section?",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#d33',
+        cancelButtonColor: '#3085d6',
+        confirmButtonText: 'Yes, remove it'
+    });
+
+    if (result.isConfirmed) {
+        showSpinner(true);
+        try {
+            const userKey = user.email.replace(/\./g, '_dot_');
+            const secRef = doc(db, "user_data", owner, "sections", id);
+
+            // Remove user from database
+            await updateDoc(secRef, {
+                sharedWith: arrayRemove(user.email),
+                [`roles.${userKey}`]: deleteField() // Remove from roles as well
+            });
+
+            Swal.fire('Removed!', 'Your access has been successfully removed.', 'success');
+            loadDashboard(); // Refresh Dashboard
+        } catch (e) {
+            console.error("Leave error:", e);
+            Swal.fire('Error!', 'Could not remove access. You might not be the owner or rules do not permit this.', 'error');
+        } finally {
+            showSpinner(false);
+        }
+    }
+};
+window.updatePresentation = async () => {
+    showSpinner(true);
+    try {
+        let sid = document.getElementById('fSecFilter').value || (typeof persistentSectionID !== 'undefined' ? persistentSectionID : null);
+        if(!sid) { showSpinner(false); return; }
+        
+        const section = allSections.find(s => s.id === sid);
+        if(!section) { showSpinner(false); return; }
+        
+        persistentSectionID = sid; 
+        const year = document.getElementById('fYear').value; 
+        const monthEnabled = document.getElementById('monthEnable').checked;
+        const prefix = monthEnabled ? `${year}-${selectedMonth.toString().padStart(2,'0')}` : `${year}`;
+        
+        const lT = section.labelT || "Target";
+        const lA = section.labelA || "Achieved";
+        const lB = section.labelB || "Balance";
+        const savedLabel = section.contributionLabel || "Contribution"; 
+        
+        const dailySnap = await getDocs(collection(db, "user_data", section.owner, "sections", sid, "daily_data"));
+        let totalT = 0, totalA = 0, mData = new Array(12).fill(0), monthItemTotals = {}, cumulativeT = 0, cumulativeA = 0;
+        
+        dailySnap.forEach(ds => {
+            if(ds.id.startsWith(year)) {
+                const m = parseInt(ds.id.split('-')[1]); 
+                const mAchieved = (ds.data().Achieved||0); 
+                const mTarget = (ds.data().Target||0);
+                mData[m-1] += mAchieved; 
+                if(m <= selectedMonth) { cumulativeT += mTarget; cumulativeA += mAchieved; }
+                if(ds.id.startsWith(prefix)) {
+                    totalT += mTarget; totalA += mAchieved;
+                    if(ds.data().tables) { 
+                        Object.entries(ds.data().tables).forEach(([tn, td]) => { 
+                            if(!monthItemTotals[tn]) monthItemTotals[tn] = {}; 
+                            Object.entries(td.items || {}).forEach(([iN, iV]) => {
+                                monthItemTotals[tn][iN] = (monthItemTotals[tn][iN]||0) + iV;
+                            }); 
+                        }); 
+                    }
+                }
+            }
+        });
+
+        const pCur = totalT > 0 ? Math.round((totalA/totalT)*100) : 0;
+        const titleLabel = monthEnabled ? monthNames[selectedMonth-1] : year;
+
+        const overviewCard = document.getElementById('overviewCard');
+        if (overviewCard) {
+            overviewCard.innerHTML = `
+                <div class="card-info" onclick="showOverviewDetails()" style="cursor:pointer; width:100%; animation: fadeIn 0.8s ease;">
+                    <h2 style="font-size:18px; font-weight:normal; color:#444;">${titleLabel} Total</h2>
+                    <div class="stat-row" style="font-size:18px; color:#444;"><span>${lT}</span><span class="colon">:</span><span>${totalT.toLocaleString('en-IN')}</span></div>
+                    <div class="stat-row" style="font-size:18px; color:#444;"><span>${lA}</span><span class="colon">:</span><span>${totalA.toLocaleString('en-IN')}</span></div>
+                    <div class="stat-row" style="font-size:18px; color:#444;"><span>${lB}</span><span class="colon">:</span><span>${(totalT-totalA < 0 ? 0 : totalT-totalA).toLocaleString('en-IN')}</span></div>
+                </div>
+                <div class="circle-box">
+                    <svg><circle class="c-bg" cx="55" cy="55" r="45"></circle><circle class="c-val" cx="55" cy="55" r="45" style="stroke-dasharray:283; stroke-dashoffset:283; transition: stroke-dashoffset 1.5s ease;"></circle></svg>
+                    <div class="perc" style="font-size:18px; font-weight:normal; color:#444;">${pCur}%</div>
+                </div>`;
+            setTimeout(() => { 
+                const circle = overviewCard.querySelector('.c-val'); 
+                if(circle) circle.style.strokeDashoffset = 283 - (283 * pCur) / 100; 
+            }, 200);
+        }
+
+        const avgA = Math.round(cumulativeA / selectedMonth) || 0; 
+        const avgT = Math.round(cumulativeT / selectedMonth) || 0;
+        const averageCard = document.getElementById('averageCard');
+        if (averageCard) {
+            averageCard.innerHTML = `
+                <div class="card-info" style="animation: fadeIn 1s ease;">
+                    <h2 style="font-size:18px; font-weight:normal; color:#444;">Monthly Avg</h2>
+                    <div class="stat-row" style="font-size:18px; color:#444;"><span>${lT}</span><span class="colon">:</span><span>${totalT.toLocaleString('en-IN')}</span></div>
+                    <div class="stat-row" style="font-size:18px; color:#444;"><span>${lA}</span><span class="colon">:</span><span>${avgA.toLocaleString('en-IN')}</span></div>
+                    <div class="stat-row" style="font-size:18px; color:#444;"><span>${lB}</span><span class="colon">:</span><span>${((avgT-avgA) < 0 ? 0 : (avgT-avgA)).toLocaleString('en-IN')}</span></div>
+                </div>
+                <div class="pie-container"><canvas id="avgPieChartCanvas"></canvas></div>`;
+            renderAvgPie(avgA, (avgT-avgA) < 0 ? 0 : (avgT-avgA));
+        }
+
+        renderChart(mData); 
+        renderGroups(monthItemTotals, totalA, savedLabel); 
+
+        showSpinner(false);
+    } catch (e) {
+        console.error("Error in updatePresentation:", e);
+        showSpinner(false);
+    }
+};
+
+// ১. গ্র্যান্ড টোটাল এবং পার্সেন্টেজ ক্যালকুলেশন ফাংশন
+window.updateGrandTotal = function(shouldSave = true) {
+    let newTotal = 0;
+    const rows = document.querySelectorAll('.summary-row');
+    const totalDisplay = document.getElementById('dynamic-grand-total');
+    const selections = {};
+
+    // টোটাল যোগ করা
+    rows.forEach(row => {
+        const checkbox = row.querySelector('.item-checkbox');
+        const isChecked = checkbox && checkbox.checked;
+        if (isChecked) {
+            newTotal += parseFloat(row.getAttribute('data-value')) || 0;
+        }
+        selections[row.getAttribute('data-name')] = isChecked;
+    });
+
+    if (totalDisplay) totalDisplay.innerText = newTotal.toLocaleString('en-IN');
+
+    // পার্সেন্টেজ (%) আপডেট করা
+    rows.forEach((row) => {
+        const val = parseFloat(row.getAttribute('data-value')) || 0;
+        const checkbox = row.querySelector('.item-checkbox');
+        const isChecked = checkbox && checkbox.checked;
+        const bar = row.querySelector('.progress-bar-fill');
+        const label = row.querySelector('.percentage-label');
+
+        if (isChecked && newTotal > 0) {
+            const p = Math.round((val / newTotal) * 100);
+            if (label) label.innerText = p + '%';
+            if (bar) bar.style.width = p + '%';
+            row.style.opacity = "1";
+        } else {
+            if (label) label.innerText = '0%';
+            if (bar) bar.style.width = '0%';
+            row.style.opacity = "0.4";
+        }
+    });
+    
+    // ফায়ারবেস সেভ লজিক (প্রয়োজন হলে রাখবেন)
+    console.log("Selections updated:", selections);
+};
+
+// ২. টাইটেল সেভ করার ফাংশন (যাতে saveContributionTitle এরর না আসে)
+window.saveContributionTitle = async function(newTitle) {
+    if(!persistentSectionID || typeof user === 'undefined' || !user) return;
+    try {
+        const { doc, updateDoc } = await import("https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js");
+        const secRef = doc(db, "user_data", user.email, "sections", persistentSectionID);
+        await updateDoc(secRef, { contributionLabel: newTitle });
+    } catch (e) {
+        console.error("Title Save Error:", e);
+    }
+};
+
+function renderGroups(items, monthlyGrandTotal, currentLabel) {
+    const container = document.getElementById('presGroupContainer');
+    if (!container) return;
+    container.innerHTML = "";
+    
+    const section = allSections.find(s => s.id === persistentSectionID);
+    const savedSelections = (section && section.contributionSelections) ? section.contributionSelections : {};
+    
+    let idx = 0; 
+    let summaries = [];
+
+    // প্রতিটি গ্রুপের ডাটা প্রসেস করা
+    Object.entries(items).forEach(([tN, vals]) => {
+        const sub = Object.values(vals).reduce((s, v) => s + v, 0);
+        const color = palette[idx % palette.length];
+        summaries.push({ name: tN, total: sub, color: color });
+
+        let html = `<div class="group-card" onclick="showGroupDetails('${tN}')" style="border-left: 10px solid ${color}; padding:20px; border-radius:20px; box-shadow:0 5px 15px rgba(0,0,0,0.05); margin-bottom:15px; background:white; cursor:pointer; animation: fadeIn 0.5s ease;">
+            <div class="group-header" style="display:flex; justify-content:space-between; font-size:18px; font-weight:normal; margin-bottom:15px; border-bottom:1px solid #eee; padding-bottom:10px; color:#444;">
+                <span>${tN}</span><span>${sub.toLocaleString('en-IN')}</span>
+            </div>`;
+
+        Object.entries(vals).forEach(([iN, iV]) => {
+            const p = sub > 0 ? Math.round((iV / sub) * 100) : 0;
+            html += `<div style="margin-top:10px;">
+                <div style="display:flex; justify-content:space-between; font-size:18px; margin-bottom:5px; color:#444;">
+                    <span>${iN} - ${iV.toLocaleString('en-IN')}</span>
+                    <span style="color:${color};">${p}%</span>
+                </div>
+                <div style="background:#f0f0f0; height:10px; border-radius:10px;">
+                    <div style="width:${p}%; background:${color}; height:100%; border-radius:10px; transition: width 1s ease;"></div>
+                </div>
+            </div>`;
+        });
+        container.innerHTML += html + `</div>`; 
+        idx++;
+    });
+
+    // সামারি কার্ড যেখানে গ্র্যান্ড টোটাল দেখাবে
+    if (summaries.length > 0) {
+        let kpiCardBody = `
+            <div style="display:flex; justify-content:space-between; align-items:center; border-bottom: 2px solid #eee; margin-bottom: 15px; padding-bottom:10px;">
+                <div style="display:flex; align-items:center; gap:8px;">
+                    <span style="font-size:18px; font-weight:600; color:#333;">
+                        ${currentLabel || " Summaries"}
+                    </span>
+                </div>
+                <span id="dynamic-grand-total" style="font-size:18px; font-weight:700; color:#00bcd4;">0</span>
+            </div>`;
+
+        summaries.forEach((s, i) => {
+            const isChecked = (savedSelections && savedSelections[s.name] === true); 
+            const uniqueColor = palette[i % palette.length];
+            
+            kpiCardBody += `
+            <div class="summary-row" data-name="${s.name}" data-value="${s.total}" style="margin-bottom:12px; opacity: ${isChecked ? '1' : '0.4'};">
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:5px;">
+                    <div style="display:flex; align-items:center; gap:8px;">
+                        <input type="checkbox" class="item-checkbox" ${isChecked ? 'checked' : ''} 
+                            onchange="window.updateGrandTotal()" 
+                            style="width:18px; height:18px; cursor:pointer; accent-color:${uniqueColor};">
+                        <span style="font-size:18px; color:#444; font-weight:500;">${s.name} - ${s.total.toLocaleString('en-IN')}</span>
+                    </div>
+                    <span class="percentage-label" style="font-size:18px; font-weight:600; color:${uniqueColor};">0%</span>
+                </div>
+                <div style="background:#f0f0f0; height:10px; border-radius:10px; overflow:hidden;">
+                    <div class="progress-bar-fill" style="width:0%; background:${uniqueColor}; height:100%; border-radius:10px; transition: width 0.5s ease;"></div>
+                </div>
+            </div>`;
+        });
+
+        container.innerHTML += `<div class="group-card" style="border-left: 12px solid #333; background: #fafafa; padding:25px; border-radius:20px; margin-bottom:15px; box-shadow:0 10px 20px rgba(0,0,0,0.1);">${kpiCardBody}</div>`;
+
+        // রেন্ডার হওয়ার সাথে সাথে গ্র্যান্ড টোটাল রিফ্রেশ করা
+        setTimeout(() => {
+            if (typeof window.updateGrandTotal === 'function') {
+                window.updateGrandTotal(false); 
+            }
+        }, 100);
+    }
+}
+
+function renderAvgPie(achieved, balance) {
+    const canvas = document.getElementById('avgPieChartCanvas');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    if(window.avgPieChart) window.avgPieChart.destroy();
+    window.avgPieChart = new Chart(ctx, { 
+        type: 'pie', 
+        data: { labels: ['Achieved', 'Balance'], datasets: [{ data: [achieved, balance], backgroundColor: ['#00bcd4', '#f44336'] }] }, 
+        plugins: [ChartDataLabels], 
+        options: { 
+            responsive: true, maintainAspectRatio: false,
+            plugins: { 
+                legend: { display: false }, 
+                datalabels: { 
+                    display: true, color: '#fff', font: { size: 18, weight: 'normal' }, 
+                    formatter: (v, ctx) => { 
+                        const total = ctx.dataset.data[0] + ctx.dataset.data[1]; 
+                        return total > 0 ? Math.round((v/total)*100)+'%' : ''; 
+                    } 
+                } 
+            } 
+        } 
+    });
+}
+function renderChart(data) {
+    const canvas = document.getElementById('productionChart');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d'); 
+    if(window.myChart) window.myChart.destroy();
+
+    // মোট ডাটার যোগফল বের করা
+    const totalSum = data.reduce((a, b) => a + b, 0);
+
+    window.myChart = new Chart(ctx, { 
+        type: 'bar', 
+        data: { labels: monthNames, datasets: [{ data, backgroundColor: palette, borderRadius: 10 }] }, 
+        plugins: [ChartDataLabels], 
+        options: { 
+            layout: { padding: { top: 60 } }, 
+            maintainAspectRatio: false, 
+            plugins: { 
+                legend: { display: false }, 
+                datalabels: { 
+                    anchor: 'end', 
+                    align: 'top', 
+                    offset: 5, 
+                    // এখানে কালার ফাংশন ব্যবহার করা হয়েছে যাতে বারের কালার অনুযায়ী % দেখায়
+                    color: (context) => {
+                        return palette[context.dataIndex % palette.length];
+                    }, 
+                    font: { size: 18, weight: 'bold' }, 
+                    formatter: (v) => {
+                        if (v === 0) return ''; 
+                        const percentage = totalSum > 0 ? Math.round((v / totalSum) * 100) : 0;
+                        // ব্র্যাকেট () সরিয়ে দেওয়া হয়েছে
+                        return `${v.toLocaleString('en-IN')}\n${percentage}%`;
+                    },
+                    textAlign: 'center'
+                } 
+            }, 
+            scales: { 
+                y: { display: false, grid: { display: false } }, 
+                x: { grid: { display: false }, ticks: { font: { size: 14 } } }
+            } 
+        } 
+    });
+}
+       // --- Analytics View (Updated for Shared Data) ---
+window.loadAnalytics = async () => {
+    if (!user) return;
+    showSpinner(true);
+    const selYear = document.getElementById('fYear').value;
+    const tbody = document.getElementById('analyticsBody');
+    tbody.innerHTML = ""; 
+    let reportData = {};
+
+    for (const sec of allSections) {
+        // সরাসরি সেকশন মালিকের পাথ (sec.owner) থেকে ডেটা ফেচ করা হচ্ছে
+        const dailySnap = await getDocs(collection(db, "user_data", sec.owner, "sections", sec.id, "daily_data"));
+        
+        dailySnap.forEach(doc => {
+            if (doc.id.startsWith(selYear)) {
+                const month = parseInt(doc.id.split('-')[1]);
+                const data = doc.data();
+                
+                if (!reportData[sec.name]) {
+                    reportData[sec.name] = { 
+                        groups: {}, 
+                        secTarget: 0, 
+                        secTotalAchieved: 0, 
+                        secMonthTotals: new Array(12).fill(0) 
+                    };
+                }
+                
+                // Target এবং Achieved সরাসরি Firebase-এর মেইন ফিল্ড থেকে নেওয়া হচ্ছে
+                reportData[sec.name].secTarget += Number(data.Target) || 0;
+                reportData[sec.name].secTotalAchieved += Number(data.Achieved) || 0; 
+
+                const tables = data.tables || {};
+                Object.entries(tables).forEach(([groupName, groupData]) => {
+                    if (groupData.items) { 
+                        if (!reportData[sec.name].groups[groupName]) {
+                            reportData[sec.name].groups[groupName] = { 
+                                items: {}, 
+                                groupMonthTotals: new Array(12).fill(0) 
+                            };
+                        }
+                        
+                        Object.entries(groupData.items).forEach(([itemName, value]) => {
+                            if (!reportData[sec.name].groups[groupName].items[itemName]) {
+                                reportData[sec.name].groups[groupName].items[itemName] = { 
+                                    months: new Array(12).fill(0) 
+                                };
+                            }
+                            
+                            let val = Number(value) || 0;
+                            reportData[sec.name].groups[groupName].items[itemName].months[month - 1] += val;
+                            reportData[sec.name].groups[groupName].groupMonthTotals[month - 1] += val;
+                            reportData[sec.name].secMonthTotals[month - 1] += val;
+                        });
+                    }
+                });
+            }
+        });
+    }
+
+    // Render Table Logic (আপনার দেওয়া স্টাইল অনুযায়ী)
+    const bStyle = `border: 1px solid #000; padding: 6px 4px; text-align: center; font-size: 16px; font-weight: normal; vertical-align: middle; color: #000; background: none;`;
+
+    Object.entries(reportData).forEach(([secName, secData]) => {
+        const groups = Object.entries(secData.groups);
+        let totalRows = 0;
+        groups.forEach(([gn, gd]) => {
+            const itemsCount = Object.keys(gd.items).length;
+            totalRows += (itemsCount > 1) ? (itemsCount + 1) : itemsCount;
+        });
+
+        let isFirstSecRow = true;
+        const target = secData.secTarget;
+        const totalAch = secData.secTotalAchieved; 
+        const perc = target > 0 ? Math.round((totalAch / target) * 100) : 0;
+
+        groups.forEach(([groupName, groupData]) => {
+            const items = Object.entries(groupData.items);
+            let isFirstGrp = true;
+
+            items.forEach(([itemName, itemData]) => {
+                const tr = document.createElement('tr');
+                let html = "";
+                if (isFirstSecRow) html += `<td rowspan="${totalRows}" style="${bStyle}">${secName}</td>`;
+                if (isFirstGrp) {
+                    const gSpan = (items.length > 1) ? (items.length + 1) : items.length;
+                    html += `<td rowspan="${gSpan}" style="${bStyle}">${groupName}</td>`;
+                    isFirstGrp = false;
+                }
+                html += `<td style="${bStyle} text-align:left;">${itemName}</td>`;
+                itemData.months.forEach(m => html += `<td style="${bStyle}">${m > 0 ? m : '-'}</td>`);
+                
+                const itemSum = itemData.months.reduce((a, b) => a + (Number(b) || 0), 0);
+                html += `<td style="${bStyle}">${itemSum}</td>`;
+
+                if (isFirstSecRow) {
+                    html += `<td rowspan="${totalRows}" style="${bStyle}">${target}</td>`;
+                    html += `<td rowspan="${totalRows}" style="${bStyle}">${totalAch}</td>`;
+                    html += `<td rowspan="${totalRows}" style="${bStyle}">${perc}%</td>`;
+                    isFirstSecRow = false;
+                }
+                tr.innerHTML = html;
+                tbody.appendChild(tr);
+            });
+
+            if (items.length > 1) {
+                const subTr = document.createElement('tr');
+                let subHtml = `<td style="${bStyle} text-align:left;">${groupName} Total</td>`;
+                groupData.groupMonthTotals.forEach(gm => subHtml += `<td style="${bStyle}">${gm > 0 ? gm : '-'}</td>`);
+                const groupSum = groupData.groupMonthTotals.reduce((a, b) => a + b, 0);
+                subHtml += `<td style="${bStyle}">${groupSum}</td>`;
+                subTr.innerHTML = subHtml;
+                tbody.appendChild(subTr);
+            }
+        });
+    });
+    showSpinner(false);
+};
+
+   
+       // --- Data Entry Functions ---
+
+window.fetchDataByDate = async () => {
+    const date = document.getElementById('prodDate').value; 
+    if(!date || !currentSecID) return;
+
+    const section = allSections.find(s => s.id === currentSecID);
+    if(section) {
+        const labelT = document.getElementById('labelT_Entry');
+        const labelA = document.getElementById('labelA_Entry');
+        if(labelT) labelT.innerText = section.labelT || "Target";
+        if(labelA) labelA.innerText = (section.labelA || "Achieved").toUpperCase();
+    }
+
+    // মাস্টার মোড প্যানেলটি ডিফল্টভাবে হাইড রাখা (যাতে ওপেন হয়ে না থাকে)
+    const actions = document.getElementById('masterActions');
+    if(actions) actions.classList.add('hidden');
+    window.isMasterMode = false; // শুরুতে এটি false থাকবে
+
+    try {
+        const dailyDoc = await getDoc(doc(db, "user_data", section.owner, "sections", currentSecID, "daily_data", date));
+        
+        if(dailyDoc.exists()) {
+            const d = dailyDoc.data(); 
+            document.getElementById('tVal').value = d.Target || 0; 
+            document.getElementById('aVal').value = d.Achieved || 0; 
+            document.getElementById('prodNote').value = d.Note || "";
+            renderTables(d.tables || {});
+        } else {
+            const secDoc = await getDoc(doc(db, "user_data", section.owner, "sections", currentSecID));
+            const master = (secDoc.exists() ? secDoc.data().masterConfig : {}) || {};
+            
+            document.getElementById('tVal').value = 0; 
+            document.getElementById('aVal').value = 0; 
+            document.getElementById('prodNote').value = "";
+            
+            const resetTables = JSON.parse(JSON.stringify(master));
+            Object.values(resetTables).forEach(t => { 
+                if(t.items) Object.keys(t.items).forEach(k => t.items[k] = 0); 
+            });
+            renderTables(resetTables);
+        }
+    } catch (err) {
+        console.error("Fetch Error:", err);
+    }
+};
+
+function renderTables(tables) {
+    const container = document.getElementById('dynamicContainer'); 
+    container.innerHTML = "";
+    
+    Object.entries(tables).forEach(([tN, tD]) => {
+        const div = document.createElement('div'); 
+        div.className = "table-block"; 
+        div.style.cssText = "border:1px solid #ddd; padding:10px; border-radius:10px; margin-bottom:10px; background:#fafafa;";
+        
+        let subtotal = Object.values(tD.items || {}).reduce((acc, val) => acc + (parseFloat(val) || 0), 0);
+        
+        div.innerHTML = `
+            <div style="display:flex; justify-content:space-between; align-items:center;">
+                <div style="display:flex; align-items:center;">
+                    ${isMasterMode ? `<button onclick="deleteTable('${tN}')" style="background:none; border:none; color:red; font-weight:bold; cursor:pointer; margin-right:8px;">✕</button>` : ''}
+                    <strong class="table-name" contenteditable="${isMasterMode}" style="outline:none; cursor:${isMasterMode ? 'text' : 'default'}">${tN}</strong>
+                </div>
+                <div>
+                    <span class="subtotal-display" id="subtotal-${tN}" style="margin-right:10px; font-weight:bold;">${subtotal}</span>
+                    <input type="checkbox" ${tD.selected ? 'checked' : ''} 
+                           onchange="calcTotal()" class="table-check" data-name="${tN}">
+                </div>
+            </div>
+            <div id="items-${tN}">
+                ${Object.entries(tD.items || {}).map(([iN, iV]) => `
+                    <div class="item-row" style="display:flex; justify-content:space-between; align-items:center; margin-top:5px;">
+                        <div style="display:flex; align-items:center;">
+                            ${isMasterMode ? `<button onclick="removeItem('${tN}', '${iN}')" style="background:none; border:none; color:red; font-size:12px; cursor:pointer; margin-right:5px;">✕</button>` : ''}
+                            <span class="item-name" contenteditable="${isMasterMode}" style="outline:none; cursor:${isMasterMode ? 'text' : 'default'}">${iN}</span>
+                        </div>
+                        <input type="number" value="${iV}" class="val-in item-input" 
+                               data-table="${tN}" data-item="${iN}" oninput="calcTotal()">
+                    </div>
+                `).join('')}
+            </div>
+            ${isMasterMode ? `<button onclick="addItem('${tN}')" style="margin-top:8px; font-size:11px; color:blue; background:none; border:none; cursor:pointer;">+ Add Item</button>` : ''}
+        `;
+        container.appendChild(div);
+    });
+    calcTotal();
+}
+
+window.calcTotal = () => {
+    let grandTotal = 0;
+    
+    document.querySelectorAll('.table-block').forEach(block => {
+        let tableSub = 0;
+        const isChecked = block.querySelector('.table-check').checked;
+        
+        block.querySelectorAll('.item-input').forEach(input => {
+            const val = Number(input.value) || 0;
+            tableSub += val;
+        });
+
+        const subDisplay = block.querySelector('.subtotal-display');
+        if (subDisplay) subDisplay.innerText = tableSub;
+        
+        if (isChecked) grandTotal += tableSub;
+    });
+
+    const aValInput = document.getElementById('aVal');
+    if (aValInput) aValInput.value = grandTotal;
+};
+
+// --- Management & Saving Logic ---
+
+function getCurrentTables() { 
+    const tables = {}; 
+    document.querySelectorAll('.table-block').forEach(block => { 
+        const tableName = block.querySelector('.table-name').innerText.trim();
+        const isChecked = block.querySelector('.table-check').checked;
+        
+        tables[tableName] = { selected: isChecked, items: {} }; 
+        
+        block.querySelectorAll('.item-row').forEach(row => { 
+            const itemName = row.querySelector('.item-name').innerText.trim();
+            const itemVal = Number(row.querySelector('.item-input').value) || 0;
+            tables[tableName].items[itemName] = itemVal;
+        });
+    });
+    return tables;
+}
+
+window.saveData = async () => {
+    const date = document.getElementById('prodDate').value; 
+    if(!date) return alert("Please select a date");
+    
+    if (typeof showSpinner === 'function') showSpinner(true);
+    
+    const tables = getCurrentTables(); 
+    const payload = { 
+        Target: Number(document.getElementById('tVal').value) || 0, 
+        Achieved: Number(document.getElementById('aVal').value) || 0, 
+        Note: document.getElementById('prodNote').value || "", 
+        tables: tables 
+    };
+
+    try {
+        await setDoc(doc(db, "user_data", currentSecOwner, "sections", currentSecID, "daily_data", date), payload);
+        
+        if(typeof isMasterMode !== 'undefined' && isMasterMode) {
+            await updateDoc(doc(db, "user_data", currentSecOwner, "sections", currentSecID), { 
+                masterConfig: tables 
+            });
+        }
+        
+        if (typeof closeModal === 'function') closeModal('entryModal');
+
+        await Swal.fire({
+            title: 'Saved!',
+            text: 'Everything has been saved successfully.',
+            icon: 'success',
+            confirmButtonColor: '#00bcd4',
+            timer: 2000
+        });
+
+        if(typeof updatePresentation === 'function') updatePresentation();
+        if(typeof loadDashboard === 'function') loadDashboard();
+
+    } catch (err) { 
+        console.error("Save Error:", err);
+        Swal.fire({ title: 'Save Failed', text: err.message, icon: 'error' });
+    } finally {
+        if (typeof showSpinner === 'function') showSpinner(false);
+    }
+};
+
+// --- মাস্টার মোড ফাংশন (ক্লিক করলে ওপেন হবে) ---
+
+window.toggleMasterMode = () => {
+    // বর্তমান অবস্থার বিপরীত করা
+    isMasterMode = !isMasterMode;
+    
+    const actions = document.getElementById('masterActions');
+    if(actions) {
+        if(isMasterMode) {
+            actions.classList.remove('hidden'); // শো করবে
+        } else {
+            actions.classList.add('hidden'); // হাইড করবে
+        }
+    }
+    
+    // ভিউ আপডেট করার জন্য টেবিলগুলো পুনরায় রেন্ডার করা
+    const current = getCurrentTables();
+    renderTables(current);
+};
+
+window.deleteTable = async (tN) => {
+    const result = await Swal.fire({
+        title: 'Are you sure?',
+        text: `Delete '${tN}'?`,
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#d33',
+        cancelButtonColor: '#3085d6'
+    });
+    if (result.isConfirmed) {
+        const current = getCurrentTables();
+        if (current && current[tN]) {
+            delete current[tN];
+            renderTables(current);
+        }
+    }
+};
+
+window.removeItem = async (tN, iN) => {
+    const result = await Swal.fire({
+        title: 'Remove Item?',
+        text: `Delete '${iN}'?`,
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#d33',
+        cancelButtonColor: '#3085d6'
+    });
+    if (result.isConfirmed) {
+        const current = getCurrentTables();
+        if (current && current[tN]?.items) {
+            delete current[tN].items[iN];
+            renderTables(current);
+        }
+    }
+};
+
+window.addTable = async () => {
+    const { value: name } = await Swal.fire({
+        title: 'Enter Table Name',
+        input: 'text',
+        showCancelButton: true,
+        inputPlaceholder: 'e.g., Line 01, Shift A',
+        inputValidator: (v) => !v && 'Name required!',
+        confirmButtonColor: '#00bcd4'
+    });
+    
+    if (name) {
+        const current = getCurrentTables(); 
+        const exists = Object.keys(current).some(key => key.toLowerCase() === name.toLowerCase());
+        if (exists) return Swal.fire('Error', 'Table already exists!', 'error');
+
+        current[name] = { selected: true, items: {} }; 
+        renderTables(current);
+    }
+};
+
+window.addItem = async (tN) => {
+    const { value: name } = await Swal.fire({
+        title: `Add to ${tN}`,
+        input: 'text',
+        showCancelButton: true,
+        inputPlaceholder: 'Item Name',
+        inputValidator: (v) => !v && 'Name required!',
+        confirmButtonColor: '#00bcd4'
+    });
+
+    if (name) {
+        const current = getCurrentTables(); 
+        if(current[tN]) { 
+            if (!current[tN].items[name]) {
+                current[tN].items[name] = 0; 
+                renderTables(current); 
+            } else {
+                Swal.fire('Error', 'Item already exists in this table!', 'error');
+            }
+        }
+    }
+};
+window.createSection = async () => {
+    const inputName = document.getElementById('newSecName');
+    const name = inputName?.value.trim() || "";
+    
+    // ইনপুট থেকে কাস্টম লেবেল নেওয়া
+    const lT = document.getElementById('labelT')?.value.trim() || "Target";
+    const lA = document.getElementById('labelA')?.value.trim() || "Achieved";
+    const lB = document.getElementById('labelB')?.value.trim() || "Balance";
+
+    if (!name) {
+        return Swal.fire({
+            title: 'নাম প্রয়োজন',
+            text: 'দয়া করে সেকশনের একটি নাম দিন!',
+            icon: 'info',
+            confirmButtonColor: '#00bcd4'
+        });
+    }
+
+    // --- ডুপ্লিকেট চেক (ক্রাশ প্রোটেকশন সহ) ---
+    const checkLength = 4; 
+    const newNamePart = name.substring(0, Math.min(name.length, checkLength)).toLowerCase();
+    
+    const isDuplicate = (allSections || []).some(sec => {
+        // sec.sectionName অথবা sec.name যেটাই থাকুক সেটা নিবে
+        const existingName = sec.sectionName || sec.name || ""; 
+        if (!existingName) return false;
+        
+        const existingNamePart = existingName.substring(0, Math.min(existingName.length, checkLength)).toLowerCase();
+        return existingNamePart === newNamePart;
+    });
+
+    if (isDuplicate) {
+        return Swal.fire({
+            title: 'Duplicate Detected!',
+            text: `A section with similar starting characters ("${newNamePart}") already exists.`,
+            icon: 'warning',
+            confirmButtonColor: '#00bcd4'
+        });
+    }
+
+    if (typeof showSpinner === 'function') showSpinner(true);
+
+    try {
+        // ফায়ারবেস ম্যাপে ডট (.) সাপোর্ট করে না, তাই ইমেইল কি ফরম্যাট করা
+        const emailKey = user.email.replace(/\./g, '_dot_');
+
+        // --- ডাটাবেস স্ট্রাকচার (Array + Roles + Labels) ---
+        const newSectionData = {
+            sectionName: name,           // ড্যাশবোর্ডের জন্য
+            name: name,                  // ব্যাকওয়ার্ড সাপোর্ট
+            ownerEmail: user.email,      // মালিক
+            createdAt: new Date().toISOString(),
+            sharedWith: [user.email],    // Array format
+            roles: {                     // Roles Map
+                [emailKey]: "admin"      // ডট রিপ্লেস করা ইমেইল কি হিসেবে ব্যবহার
+            },
+            labelT: lT,                  // Target
+            labelA: lA,                  // Achieved
+            labelB: lB,                  // Balance
+            deleted: false,
+            showContribution: true 
+        };
+
+        // ডাটাবেসে সেভ করা
+        const userDocRef = collection(db, "user_data", user.email, "sections");
+        await addDoc(userDocRef, newSectionData);
+        
+        // ক্লিনআপ
+        if (inputName) inputName.value = "";
+        if (typeof closeModal === 'function') closeModal('createModal');
+        
+        await Swal.fire({ 
+            title: 'Success!', 
+            text: 'Section created successfully.', 
+            icon: 'success',
+            confirmButtonColor: '#00bcd4'
+        });
+
+        // ড্যাশবোর্ড রিফ্রেশ
+        if (typeof window.loadDashboard === 'function') await window.loadDashboard();
+        else if (typeof loadSections === 'function') loadSections(); 
+        else location.reload();
+
+    } catch (err) {
+        console.error("Create Error:", err);
+        // পারমিশন এরর হলে ইউজারকে জানানো
+        Swal.fire({ 
+            title: 'Permission Denied!', 
+            text: 'Could not create section. Please check your Firestore rules.', 
+            icon: 'error',
+            confirmButtonColor: '#f44336'
+        });
+    } finally {
+        if (typeof showSpinner === 'function') showSpinner(false);
+    }
+};
+window.openShareModal = (e, id, name) => {
+    e.stopPropagation(); 
+    window.currentSecID = id; 
+    const modalTitle = document.getElementById('sharingSecName');
+    if(modalTitle) modalTitle.innerText = `Share: ${name}`;
+    
+    const list = document.getElementById('shareList');
+    if(list) list.innerHTML = "<p style='text-align:center; padding:20px;'>Loading permissions...</p>"; 
+    
+    openModal('shareModal'); 
+    loadPermissions(id);
+};
+
+async function loadPermissions(id) {
+    try {
+        // ১. সেকশনটি খুঁজে বের করা যাতে ওনারের ইমেইল পাওয়া যায়
+        const section = (typeof allSections !== 'undefined') ? allSections.find(s => s.id === id) : null;
+        const ownerEmail = (section && section.owner) ? section.owner : (user ? user.email : null);
+        
+        if (!ownerEmail) throw new Error("Owner not found");
+
+        // ২. সঠিক ওনারের পাথ থেকে ডকুমেন্ট গেট করা
+        const secDoc = await getDoc(doc(db, "user_data", ownerEmail, "sections", id));
+        if (!secDoc.exists()) throw new Error("Section document missing");
+
+        const data = secDoc.data();
+        const sharedWith = data.sharedWith || []; 
+        const roles = data.roles || {};           
+        
+        const list = document.getElementById('shareList');
+        if(!list) return;
+
+        list.innerHTML = "<h4 style='margin-bottom:10px; border-bottom:1px solid #ddd; padding-bottom:5px;'>Shared with:</h4>";
+
+        if (sharedWith.length === 0) {
+            list.innerHTML += "<p style='color:#888; font-size:14px; text-align:center; padding:10px;'>No users added yet.</p>";
+            return;
+        }
+
+        sharedWith.forEach((email) => {
+            const emailKey = email.replace(/\./g, '_dot_');
+            const role = roles[emailKey] || 'viewer';
+            
+            list.innerHTML += `
+                <div class="share-item" style="display:flex; justify-content:space-between; align-items:center; padding:10px 0; border-bottom:1px solid #eee;">
+                    <div>
+                        <div style="font-weight:bold; font-size:14px; color:#333;">${email}</div>
+                        <div style="font-size:12px; color:var(--primary, #00bcd4); text-transform:capitalize;">${role}</div>
+                    </div>
+                    <button onclick="removePermission('${email}')" 
+                            style="color:#ff5252; border:1px solid #ff5252; background:none; padding:5px 12px; border-radius:4px; cursor:pointer; font-size:12px; transition:0.3s;">
+                        Remove
+                    </button>
+                </div>`;
+        });
+    } catch (err) {
+        console.error("Load Permissions Error:", err);
+        const list = document.getElementById('shareList');
+        if(list) list.innerHTML = `<p style="color:red; font-size:12px;">Error loading permissions: ${err.message}</p>`;
+    }
+}
+
+window.addPermission = async () => {
+    const emailInput = document.getElementById('shareEmail');
+    const roleInput = document.getElementById('shareRole');
+    if (!emailInput || !roleInput) return;
+
+    const email = emailInput.value.toLowerCase().trim();
+    const role = roleInput.value;
+
+    if (!email || !email.includes('@')) {
+        return Swal.fire('Error', 'Please enter a valid email address.', 'warning');
+    }
+
+    if (typeof showSpinner === 'function') showSpinner(true);
+
+    try {
+        const sid = window.currentSecID || (typeof persistentSectionID !== 'undefined' ? persistentSectionID : null);
+        if (!sid) throw new Error("No active section selected.");
+
+        const section = (typeof allSections !== 'undefined') ? allSections.find(s => s.id === sid) : null;
+        const ownerEmail = (section && section.owner) ? section.owner : (user ? user.email : null);
+        
+        if (!ownerEmail) throw new Error("Could not determine section owner.");
+
+        const secRef = doc(db, "user_data", ownerEmail, "sections", sid);
+        const emailKey = email.replace(/\./g, '_dot_');
+
+        await updateDoc(secRef, { 
+            sharedWith: arrayUnion(email),
+            [`roles.${emailKey}`]: role 
+        });
+
+        emailInput.value = "";
+        await loadPermissions(sid); 
+        
+        Swal.fire({
+            title: 'Success',
+            text: `${email} added as ${role}`,
+            icon: 'success',
+            confirmButtonColor: '#00bcd4'
+        });
+
+    } catch (err) {
+        console.error("Add Permission Error:", err);
+        Swal.fire('Failed', err.message, 'error');
+    } finally {
+        if (typeof showSpinner === 'function') showSpinner(false);
+    }
+};
+
+window.removePermission = async (targetEmail) => {
+    const result = await Swal.fire({
+        title: 'Are you sure?',
+        text: `Revoke all access for ${targetEmail}?`,
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#d33',
+        confirmButtonText: 'Yes, remove!'
+    });
+
+    if (!result.isConfirmed) return;
+    if (typeof showSpinner === 'function') showSpinner(true);
+
+    try {
+        const sid = window.currentSecID || (typeof persistentSectionID !== 'undefined' ? persistentSectionID : null);
+        const section = (typeof allSections !== 'undefined') ? allSections.find(s => s.id === sid) : null;
+        const ownerEmail = (section && section.owner) ? section.owner : (user ? user.email : null);
+
+        if (!ownerEmail) throw new Error("Owner info missing.");
+
+        const secRef = doc(db, "user_data", ownerEmail, "sections", sid);
+        const emailKey = targetEmail.replace(/\./g, '_dot_');
+
+        await updateDoc(secRef, { 
+            sharedWith: arrayRemove(targetEmail),
+            [`roles.${emailKey}`]: deleteField()
+        });
+        
+        await loadPermissions(sid);
+        Swal.fire('Removed', 'Access revoked successfully.', 'success');
+    } catch (err) {
+        console.error("Remove Permission Error:", err);
+        Swal.fire('Error', err.message, 'error');
+    } finally {
+        if (typeof showSpinner === 'function') showSpinner(false);
+    }
+};
+// --- Updated JavaScript Functions (14px Font, Compact Excel Style) ---
+window.showGroupDetails = async (groupName) => {
+    if (typeof showSpinner === 'function') showSpinner(true);
+    
+    const sid = document.getElementById('fSecFilter').value || (typeof persistentSectionID !== 'undefined' ? persistentSectionID : '');
+    const year = document.getElementById('fYear').value;
+    const month = selectedMonth.toString().padStart(2, '0');
+    const prefix = `${year}-${month}`;
+
+    try {
+        const section = allSections.find(s => s.id === sid);
+        if (!section) return;
+
+        const dailySnap = await getDocs(collection(db, "user_data", section.owner, "sections", sid, "daily_data"));
+
+        let dailyDataMap = {};
+        let itemNames = new Set();
+        let updatedDates = [];
+
+        dailySnap.forEach(doc => {
+            if (doc.id.startsWith(prefix)) {
+                const data = doc.data();
+                const tableData = data.tables && data.tables[groupName];
+                if (tableData && tableData.items) {
+                    dailyDataMap[doc.id] = tableData.items;
+                    updatedDates.push(doc.id);
+                    Object.keys(tableData.items).forEach(name => itemNames.add(name));
+                }
+            }
+        });
+
+        updatedDates.sort();
+        const itemsArray = Array.from(itemNames);
+
+        // ১. হেডার
+        let headHtml = `<tr style="font-size: 14px;">
+            <th style="border: 1px solid #000; padding: 4px; font-weight: bold;">Date</th>`;
+        itemsArray.forEach(name => { 
+            headHtml += `<th style="border: 1px solid #000; padding: 4px; font-weight: bold;">${name}</th>`; 
+        });
+        headHtml += `<th style="border: 1px solid #000; padding: 4px; font-weight: bold;">Total</th></tr>`;
+        document.getElementById('dynamicHeadings').innerHTML = headHtml;
+
+        // ২. বডি
+        let bodyHtml = "";
+        let columnTotals = new Array(itemsArray.length).fill(0);
+        let grandTotal = 0;
+
+        updatedDates.forEach(dateKey => {
+            const items = dailyDataMap[dateKey];
+            let rowTotal = 0;
+            const p = dateKey.split('-');
+            const displayDate = `${p[2]}-${p[1]}-${p[0]}`;
+
+            bodyHtml += `<tr style="font-size: 14px; text-align: center; line-height: 1.1;">
+                <td style="border: 1px solid #000; padding: 2px;">${displayDate}</td>`; 
+            
+            itemsArray.forEach((name, idx) => {
+                const val = Number(items[name]) || 0;
+                bodyHtml += `<td style="border: 1px solid #000; padding: 2px;">${val > 0 ? val.toLocaleString() : '-'}</td>`;
+                columnTotals[idx] += val;
+                rowTotal += val;
+            });
+            bodyHtml += `<td style="border: 1px solid #000; padding: 2px;">${rowTotal.toLocaleString()}</td></tr>`;
+            grandTotal += rowTotal;
+        });
+        document.getElementById('groupDetailBody').innerHTML = bodyHtml;
+
+        // ৩. ফুটার
+        let footHtml = `<tr style="font-weight:bold; font-size: 14px; text-align: center;">
+            <td style="border: 1px solid #000; padding: 4px;">Total</td>`;
+        columnTotals.forEach(t => { 
+            footHtml += `<td style="border: 1px solid #000; padding: 4px;">${t.toLocaleString()}</td>`; 
+        });
+        footHtml += `<td style="border: 1px solid #000; padding: 4px;">${grandTotal.toLocaleString()}</td></tr>`;
+        document.getElementById('groupDetailFoot').innerHTML = footHtml;
+
+        // ৪. স্টাইলিং ও কন্টেইনার ফিক্স
+        const modal = document.getElementById('groupDetailsModal');
+        const modalBody = modal.querySelector('.modal-body') || modal.querySelector('.a4-page').parentElement;
+
+        if (modalBody) {
+            modalBody.style.maxHeight = "80vh";
+            modalBody.style.overflowY = "auto";
+        }
+        
+        const tableElement = document.getElementById('reportTableExcel');
+        if(tableElement) {
+            tableElement.style.borderCollapse = "collapse";
+            tableElement.style.width = "100%";
+        }
+
+        // ৫. নাম আপডেট (এখানে আপনার HTML এর reportTitle আইডি ব্যবহার করা হয়েছে)
+        if(section) {
+            document.getElementById('reportTitle').innerText = `${section.name} - ${groupName}`;
+        }
+
+    } catch (error) {
+        console.error("Error:", error);
+    }
+
+    if (typeof showSpinner === 'function') showSpinner(false);
+    openModal('groupDetailsModal');
+};
+
+
+       window.showOverviewDetails = async () => {
+    showSpinner(true); 
+    try {
+        const sid = document.getElementById('fSecFilter').value || (typeof persistentSectionID !== 'undefined' ? persistentSectionID : null);
+        const year = document.getElementById('fYear').value;
+        const monthEnabled = document.getElementById('monthEnable').checked;
+        const prefix = monthEnabled ? `${year}-${selectedMonth.toString().padStart(2,'0')}` : `${year}`;
+
+        const section = allSections.find(s => s.id === sid);
+        if(!section) { showSpinner(false); return; }
+
+        const lT = section.labelT || "Target";
+        const lA = section.labelA || "Achieved";
+
+        // ১. হেডার (ফন্ট সাইজ ১৪ এবং কালো বর্ডার)
+        const tableHeader = document.querySelector('#overviewDetailsModal table thead');
+        if (tableHeader) {
+            tableHeader.innerHTML = `
+                <tr style="font-size: 14px; background: transparent;">
+                    <th style="border: 1px solid #000; padding: 4px;">Date</th>
+                    <th style="border: 1px solid #000; padding: 4px;">${lT}</th>
+                    <th style="border: 1px solid #000; padding: 4px;">${lA}</th>
+                    <th style="border: 1px solid #000; padding: 4px;">Achi%</th>
+                    <th style="border: 1px solid #000; padding: 4px;">Note</th>
+                </tr>`;
+        }
+
+        const dailySnap = await getDocs(collection(db, "user_data", section.owner, "sections", sid, "daily_data"));
+        
+        let bodyHtml = "", totalT = 0, totalA = 0, dataList = [];
+        dailySnap.forEach(ds => {
+            if(ds.id.startsWith(prefix)) dataList.push({ id: ds.id, ...ds.data() });
+        });
+        dataList.sort((a, b) => a.id.localeCompare(b.id));
+
+        dataList.forEach(d => {
+            const t = Number(d.Target) || 0;
+            const a = Number(d.Achieved) || 0;
+            
+            // পারসেন্টেজ রাউন্ড করা হয়েছে (দশমিক ছাড়া)
+            const percent = t > 0 ? Math.round((a / t) * 100) : 0;
+            
+            const dateParts = d.id.split('-');
+            const fDate = dateParts.length === 3 ? `${dateParts[2]}-${dateParts[1]}-${dateParts[0]}` : d.id;
+            
+            totalT += t; totalA += a;
+            
+            // বডি ডাটা (ফন্ট সাইজ ১৪ এবং কমপ্যাক্ট প্যাডিং)
+            bodyHtml += `
+                <tr style="text-align: center; font-size: 14px; line-height: 1.1;">
+                    <td style="border: 1px solid #000; padding: 3px;">${fDate}</td>
+                    <td style="border: 1px solid #000; padding: 3px;">${t.toLocaleString()}</td>
+                    <td style="border: 1px solid #000; padding: 3px;">${a.toLocaleString()}</td>
+                    <td style="border: 1px solid #000; padding: 3px;">${percent}%</td>
+                    <td style="border: 1px solid #000; padding: 3px; text-align: left;">${d.Note || ""}</td>
+                </tr>`;
+        });
+
+        document.getElementById('ovDetailBody').innerHTML = bodyHtml;
+        
+        const totalP = totalT > 0 ? Math.round((totalA / totalT) * 100) : 0;
+        
+        // ২. ফুটার (ফন্ট সাইজ ১৪)
+        document.getElementById('ovDetailFoot').innerHTML = `
+            <tr style="font-weight: bold; text-align: center; font-size: 14px;">
+                <td style="border: 1px solid #000; padding: 5px;">TOTAL</td>
+                <td style="border: 1px solid #000; padding: 5px;">${totalT.toLocaleString()}</td>
+                <td style="border: 1px solid #000; padding: 5px;">${totalA.toLocaleString()}</td>
+                <td style="border: 1px solid #000; padding: 5px;">${totalP}%</td>
+                <td style="border: 1px solid #000; padding: 5px;">-</td>
+            </tr>`;
+
+        // ৩. টেবিল ও মডাল কন্টেইনার সেটিংস
+        const modal = document.getElementById('overviewDetailsModal');
+        const tableContainer = modal.querySelector('.modal-body'); 
+        if(tableContainer) {
+            tableContainer.style.maxHeight = "75vh";
+            tableContainer.style.overflowY = "auto";
+            tableContainer.style.padding = "0";
+        }
+        
+        const tableElement = modal.querySelector('table');
+        if(tableElement) {
+            tableElement.style.borderCollapse = "collapse";
+            tableElement.style.width = "100%";
+        }
+
+        if(section) document.getElementById('rpSection').innerText = section.name;
+        openModal('overviewDetailsModal');
+    } catch (e) {
+        console.error("Overview Modal Error:", e);
+    } finally {
+        showSpinner(false);
+    }
+};
+window.downloadExcel = () => {
+    // ১. বর্তমানে কোন মডাল বা ভিউ ওপেন আছে সেটা খুঁজে বের করা
+    let activeArea = null;
+    let fileName = "Production_Report";
+
+    if (document.getElementById('overviewDetailsModal').style.display === 'block') {
+        activeArea = document.getElementById('overviewDetailsModal');
+        fileName = "Overview_Report";
+    } else if (document.getElementById('groupDetailsModal').style.display === 'block') {
+        activeArea = document.getElementById('groupDetailsModal');
+        fileName = "Group_Details_Report";
+    } else if (!document.getElementById('analyticsView').classList.contains('hidden')) {
+        activeArea = document.getElementById('analyticsView');
+        fileName = "Annual_Analytics_Report";
+    }
+
+    if (!activeArea) {
+        alert("কোন ডাটা পাওয়া যায়নি!");
+        return;
+    }
+
+    // ২. ওপেন থাকা এরিয়া থেকে ডাটা এবং টেবিল কালেক্ট করা
+    const table = activeArea.querySelector('table');
+    if (!table) return alert("টেবিলে কোনো ডাটা নেই!");
+
+    const coName = activeArea.querySelector('h1')?.innerText || "SMART PRODUCTION ERP";
+    const address = activeArea.querySelector('p')?.innerText || "Production Management System";
+    const reportTitle = activeArea.querySelector('h2, h3')?.innerText || "Report Details";
+    
+    // ডাইনামিক কলাম সংখ্যা বের করা (টাইটেল সেন্টারিং এর জন্য)
+    const firstRow = table.querySelector('tr');
+    const colCount = firstRow ? firstRow.cells.length : 10;
+
+    const tableHTML = table.innerHTML;
+
+    // ৩. এক্সেল টেমপ্লেট তৈরি (উন্নত স্টাইলসহ)
+    const excelTemplate = `
+        <html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40">
+        <head>
+            <meta charset="UTF-8">
+            <style>
+                table { border-collapse: collapse; }
+                th, td { border: 0.5pt solid #000000; text-align: center; padding: 5px; font-family: Calibri, Arial; font-size: 11pt; }
+                .header-title { font-size: 18pt; font-weight: bold; border: none; }
+                .header-sub { font-size: 11pt; border: none; color: #444; }
+                .report-name { font-size: 14pt; font-weight: bold; border: none; text-decoration: underline; padding-bottom: 20px; }
+                thead tr { background-color: #f2f2f2; font-weight: bold; }
+                tfoot tr { background-color: #d9e9ff; font-weight: bold; }
+            </style>
+        </head>
+        <body>
+            <table>
+                <tr><th colspan="${colCount}" class="header-title">${coName}</th></tr>
+                <tr><td colspan="${colCount}" class="header-sub">${address}</td></tr>
+                <tr><th colspan="${colCount}" class="report-name">${reportTitle}</th></tr>
+                <tr></tr> ${tableHTML}
+            </table>
+        </body>
+        </html>
+    `;
+
+    // ৪. ফাইল ডাউনলোড প্রসেস
+    try {
+        const blob = new Blob([excelTemplate], { type: 'application/vnd.ms-excel' });
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement("a");
+        link.href = url;
+        link.download = `${fileName}_${new Date().getTime()}.xls`;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        URL.revokeObjectURL(url);
+    } catch (err) {
+        console.error("Export Error:", err);
+        alert("এক্সেল ফাইল তৈরি করতে সমস্যা হয়েছে।");
+    }
+};
+
+function printReport(type) {
+    const body = document.body;
+    
+    // আগের মোড রিমুভ করা
+    body.classList.remove('landscape-mode', 'portrait-mode');
+    
+    // টাইপ অনুযায়ী মোড সেট করা
+    if (type === 'analytics') {
+        body.classList.add('landscape-mode');
+    } else {
+        body.classList.add('portrait-mode');
+    }
+    
+    // প্রিন্ট কমান্ড
+    window.print();
+}
+
+</script>
+</body>
+</html>

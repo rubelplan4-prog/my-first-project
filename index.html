@@ -1,0 +1,511 @@
+<body onclick="closeAllMenus()">
+
+    <div id="loadingSpinner">
+        <div class="spinner"></div>
+    </div>
+
+    <div id="landingPage" style="width: 100%; height: 100vh; overflow-y: auto; background: #fff; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; scroll-behavior: smooth;">
+
+    <header style="padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #eee; position: sticky; top: 0; background: rgba(255,255,255,0.98); z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.03);">
+        <div style="display: flex; align-items: center; gap: 12px;">
+            <h1 style="margin: 0; font-size: 26px; font-weight: 800; letter-spacing: -1px; display: flex; align-items: center;">
+                <span style="color: #1a1a1a;">Smart</span>
+                <span style="color: #00bcd4; margin-left: 5px;">Presentation</span>
+                <span style="color: #555; font-size: 14px; font-weight: 400; margin-left: 8px; border-left: 1px solid #ddd; padding-left: 8px;">ERP Global</span>
+            </h1>
+        </div>
+
+        <nav id="landing-nav" style="display: flex; gap: 20px; align-items: center;">
+            <a href="#about" style="text-decoration: none; color: #444; font-size: 14px; font-weight: 600; transition: 0.3s;" onmouseover="this.style.color='#00bcd4'" onmouseout="this.style.color='#444'">Overview</a>
+            <a href="#presentation-module" style="text-decoration: none; color: #444; font-size: 14px; font-weight: 600; transition: 0.3s;" onmouseover="this.style.color='#00bcd4'" onmouseout="this.style.color='#444'">Features</a>
+            <a href="#user-guide" style="text-decoration: none; color: #444; font-size: 14px; font-weight: 600; transition: 0.3s;" onmouseover="this.style.color='#00bcd4'" onmouseout="this.style.color='#444'">Guide</a>
+            <a href="#policy-deep-dive" style="text-decoration: none; color: #444; font-size: 14px; font-weight: 600; transition: 0.3s;" onmouseover="this.style.color='#00bcd4'" onmouseout="this.style.color='#444'">Privacy</a>
+        </nav>
+
+        <div id="landing-auth-trigger">
+            <button onclick="loginUser()" style="padding: 10px 28px; background: #00bcd4; color: white; border: none; border-radius: 25px; cursor: pointer; font-weight: bold; font-size: 14px; transition: all 0.3s ease; box-shadow: 0 4px 12px rgba(0,188,212,0.2);">
+                Login with Google
+            </button>
+        </div>
+    </header>
+
+    <div style="display: flex; flex-wrap: nowrap; justify-content: center; width: 100%;">
+
+        <aside style="width: 288px; flex-shrink: 0; padding: 15px; background: #fcfcfc; border-right: 1px solid #f0f0f0; position: sticky; top: 80px; align-self: flex-start;">
+            <span style="display: block; font-size: 11px; color: #bbb; margin-bottom: 10px; letter-spacing: 1px; text-transform: uppercase; font-weight: 600; text-align: center;">Advertisement</span>
+            <div style="width: 100%; min-height: 600px; overflow: hidden;">
+                <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8648299603771033" crossorigin="anonymous"></script>
+                <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8648299603771033" data-ad-slot="9606648113" data-ad-format="vertical" data-full-width-responsive="false"></ins>
+                <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+            </div>
+        </aside>
+
+        <main style="flex: 1; max-width: 1100px;">
+            
+            <section id="about" style="padding: 80px 10%; background: #ffffff;">
+                <div style="max-width: 1100px; margin: 0 auto;">
+                    <h2 style="font-size: 35px; color: #1a1a1a; margin-bottom: 30px; text-align: center; font-weight: 800; line-height: 1.2;">Revolutionizing Global Industrial Management</h2>
+                    <p style="font-size: 18px; color: #444; line-height: 1.8; margin-bottom: 25px; text-align: justify;">
+                        In the heart of the world's most dynamic manufacturing hubs, <strong>Smart Presentation ERP</strong> stands as a beacon of digital transformation. Designed specifically for the high-demand RMG, textile, and diverse manufacturing sectors worldwide, our platform is not just a software; it is a strategic partner for global growth. We eliminate inefficiencies by providing a centralized, real-time, and cloud-integrated ecosystem for businesses operating across borders.
+                    </p>
+                    <p style="font-size: 18px; color: #444; line-height: 1.8; margin-bottom: 25px; text-align: justify;">
+                        Modern manufacturing requires more than just data entry; it requires <strong>Industrial Intelligence</strong>. Smart Presentation ERP analyzes complex global workflows, from raw material procurement to final product shipment. By using high-performance algorithms, we help factories worldwide optimize machine utilization, reduce wastage, and maintain international quality standards. This system is tailored to handle high-volume production environments across any geographic location.
+                    </p>
+                    <p style="font-size: 18px; color: #444; line-height: 1.8; margin-bottom: 25px; text-align: justify;">
+                        The industrial sector is a high-stakes environment where every minute of downtime translates into significant financial loss. <strong>Smart Presentation ERP</strong> bridges the communication gap between the production floor and the executive office. Utilizing the latest advancements in cloud technology, we ensure that production data is instantly accessible to management, whether they are on-site or monitoring operations from across the globe.
+                    </p>
+                    <h3 style="font-size: 28px; color: #00bcd4; margin-top: 50px; font-weight: 700;">The Importance of Real-Time Data Visualization</h3>
+                    <p style="font-size: 17px; color: #555; line-height: 1.8; margin-bottom: 25px; text-align: justify;">
+                        Our ERP changes the traditional reporting narrative. With our "Live KPI Dashboard," production targets and actual output are plotted on dynamic charts in real-time. If a production line falls behind schedule anywhere in the world, the system highlights it immediately. This allows for proactive intervention, which is the cornerstone of modern Lean Manufacturing principles on an international scale.
+                    </p>
+                    <h3 style="font-size: 28px; color: #00bcd4; margin-top: 50px; font-weight: 700;">Tailored Solutions for Global Industry Challenges</h3>
+                    <p style="font-size: 17px; color: #555; line-height: 1.8; margin-bottom: 25px; text-align: justify;">
+                        Every region has unique industrial challenges. Smart Presentation ERP is built with a flexible architecture to meet these diverse needs. Our system supports multi-currency reporting, flexible shifts, and high-performance indexing that handles millions of rows of data without lag. We understand that scalability is key; therefore, our architecture supports growing from a single unit to a massive multi-national conglomerate effortlessly.
+                    </p>
+                    <div style="background: #f4f7fe; padding: 40px; border-radius: 30px; border-left: 8px solid #00bcd4; margin: 50px 0; box-shadow: 0 5px 15px rgba(0,0,0,0.05);">
+                        <h3 style="color: #1a1a1a; margin-bottom: 15px; font-size: 24px; font-weight: 700;">Sustainable Industrial Growth through Digitalization</h3>
+                        <p style="color: #444; font-style: italic; font-size: 17px; line-height: 1.7;">
+                            "Our vision is to empower every manufacturing unit globally with the tools of the Fourth Industrial Revolution. By digitizing production data, we don't just increase efficiency— we create a legacy of transparency, accountability, and world-class industrial standards."
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="presentation-module" style="padding: 80px 10%; background: #f9f9f9; border-top: 1px solid #eee;">
+                <div style="max-width: 1100px; margin: 0 auto;">
+                    <h2 style="font-size: 34px; color: #1a1a1a; margin-bottom: 30px; font-weight: 800; text-align: center;">Advanced Digital Presentation & Slide View</h2>
+                    <p style="font-size: 18px; color: #444; line-height: 1.8; text-align: justify; margin-bottom: 25px;">
+                        The most powerful feature of Smart Presentation ERP is its <strong>Automated Presentation Module</strong>. Globally, creating individual slides for daily production meetings is a time-consuming task. Our ERP software converts your live production data directly into professional digital slides, ready for any boardroom.
+                    </p>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 30px;">
+                        <div style="background: #fff; padding: 25px; border-radius: 15px; border: 1px solid #eee; box-shadow: 0 4px 6px rgba(0,0,0,0.02);">
+                            <h4 style="color: #00bcd4; margin-bottom: 10px; font-size: 20px;">Live Production Slides</h4>
+                            <p style="font-size: 15px; color: #666; line-height: 1.6;">The output of every machine in your factory will automatically display in a slide format. As data refreshes during the meeting, the slides update instantly.</p>
+                        </div>
+                        <div style="background: #fff; padding: 25px; border-radius: 15px; border: 1px solid #eee; box-shadow: 0 4px 6px rgba(0,0,0,0.02);">
+                            <h4 style="color: #00bcd4; margin-bottom: 10px; font-size: 20px;">Visual KPI Presentation</h4>
+                            <p style="font-size: 15px; color: #666; line-height: 1.6;">Present Key Performance Indicators (KPIs) through beautiful charts and graphs, giving them a professional look that simplifies global management decision-making.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="excel-module" style="padding: 80px 10%; background: #ffffff; border-top: 1px solid #eee;">
+                <div style="max-width: 1100px; margin: 0 auto;">
+                    <h2 style="font-size: 34px; color: #1a1a1a; margin-bottom: 30px; font-weight: 800; text-align: center;">Seamless Microsoft Excel Integration</h2>
+                    <p style="font-size: 18px; color: #444; line-height: 1.8; text-align: justify; margin-bottom: 25px;">
+                        Excel is a universal tool in the manufacturing sector. That is why we have integrated advanced <strong>Excel Data Management</strong> features into Smart Presentation ERP to streamline your global workflow.
+                    </p>
+                    <ul style="font-size: 17px; color: #555; line-height: 2; margin-bottom: 30px; list-style-type: '✔ '; padding-left: 20px;">
+                        <li><strong>Bulk Import:</strong> Import thousands of rows of production data with a single click from standard Excel files globally.</li>
+                        <li><strong>Custom Excel Export:</strong> Download any report directly in .xlsx format for offline analysis according to international standards.</li>
+                        <li><strong>Formula Preservation:</strong> Our system ensures data processing while maintaining original Excel formats and data structures.</li>
+                    </ul>
+                    <p style="font-size: 16px; color: #666; font-style: italic; border-left: 4px solid #eee; padding-left: 15px;">"Managing your global industrial data is now as easy as an Excel sheet, with the power of a Cloud ERP."</p>
+                </div>
+            </section>
+
+            <section id="features-detail" style="padding: 80px 10%; background: #fcfcfc; border-top: 1px solid #f0f0f0;">
+                <h2 style="text-align: center; font-size: 36px; font-weight: 800; margin-bottom: 60px;">Why Choose Smart Presentation ERP Global?</h2>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px;">
+                    <div style="background: white; padding: 35px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border: 1px solid #f0f0f0;">
+                        <h4 style="color: #00bcd4; font-size: 22px; margin-bottom: 15px;">Advanced Analytics Engine</h4>
+                        <p style="color: #666; font-size: 15px; line-height: 1.7;">Our system analyzes efficiency percentages, target vs. achievement ratios, and identifies global seasonal trends. Forecast future production capacity with up to 98% accuracy based on historical trends.</p>
+                    </div>
+                    <div style="background: white; padding: 35px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border: 1px solid #f0f0f0;">
+                        <h4 style="color: #00bcd4; font-size: 22px; margin-bottom: 15px;">Cloud-Native Architecture</h4>
+                        <p style="color: #666; font-size: 15px; line-height: 1.7;">Powered by Firebase, our ERP offers unparalleled speed for international users. Being web-based, any device with an internet connection becomes a secure window into your factory’s heart.</p>
+                    </div>
+                    <div style="background: white; padding: 35px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border: 1px solid #f0f0f0;">
+                        <h4 style="color: #00bcd4; font-size: 22px; margin-bottom: 15px;">Zero-Code Form Builder</h4>
+                        <p style="color: #666; font-size: 15px; line-height: 1.7;">Every department across your global branches is different. Our Dynamic Customization allows users to create their own input forms without writing a single line of code.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="user-guide" style="padding: 100px 10%; background: #f4f7fe;">
+                <div style="max-width: 1000px; margin: 0 auto;">
+                    <h2 style="text-align: center; font-size: 38px; margin-bottom: 20px; font-weight: 800;">Global Operational Guide</h2>
+                    <p style="text-align: center; color: #666; margin-bottom: 60px; font-size: 18px;">Implementing Smart Presentation ERP across your global organization.</p>
+                    <div style="margin-bottom: 40px; background: #fff; padding: 30px; border-radius: 20px;">
+                        <h3 style="color: #1a1a1a; font-size: 24px; margin-bottom: 15px;">1. Onboarding and Identity Management</h3>
+                        <p style="color: #444; line-height: 1.8; font-size: 16px;">Security is paramount for international businesses. The process begins with secure Google OAuth integration, ensuring every entry is logged under a verified identity. Define global hierarchies with roles such as "Department Manager" and "Executive Viewer" to maintain strict corporate confidentiality.</p>
+                    </div>
+                    <div style="margin-bottom: 40px; background: #fff; padding: 30px; border-radius: 20px;">
+                        <h3 style="color: #1a1a1a; font-size: 24px; margin-bottom: 15px;">2. Master Configuration and Mapping</h3>
+                        <p style="color: #444; line-height: 1.8; font-size: 16px;">Create a "Digital Factory Map" for each of your international units. Define lines, machines, and production targets. Our "Bulk Import" features make it easy to transition from legacy systems into our smart global ecosystem within minutes.</p>
+                    </div>
+                    <div style="margin-bottom: 40px; background: #fff; padding: 30px; border-radius: 20px;">
+                        <h3 style="color: #1a1a1a; font-size: 24px; margin-bottom: 15px;">3. Data Input Lifecycle and Validation</h3>
+                        <p style="color: #444; line-height: 1.8; font-size: 16px;">Supervisors worldwide can enter data using an interface optimized for speed. "Smart Validation" prevents human error by flagging entries that exceed machine capacity. Data undergoes a three-way sync, updating cloud databases and management dashboards simultaneously.</p>
+                    </div>
+                    <div style="margin-bottom: 40px; background: #fff; padding: 30px; border-radius: 20px;">
+                        <h3 style="color: #1a1a1a; font-size: 24px; margin-bottom: 15px;">4. Advanced Reporting and Global Documentation</h3>
+                        <p style="color: #444; line-height: 1.8; font-size: 16px;">Generate professional reports, monthly summaries, and growth charts with a single click. Every report is "Print-Ready" in standard A4 size, ideal for emailing to global buyers or presenting at international board meetings.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="policy-deep-dive" style="padding: 80px 10%; background: #ffffff;">
+                 <div style="max-width: 950px; margin: 0 auto; border: 1px solid #eee; padding: 50px; border-radius: 30px; line-height: 1.9; color: #555;">
+                    <h2 style="text-align: center; color: #1a1a1a; font-weight: 800; margin-bottom: 40px;">Legal and Privacy Standards</h2>
+                    <h4 id="privacy" style="color: #333; font-weight: 700;">Data Integrity and Protection Policy</h4>
+                    <p>Smart Presentation ERP is committed to international standards of data integrity. We utilize end-to-end encryption for all factory metrics. Our servers are hosted on enterprise-grade infrastructure with 99.9% uptime. We guarantee your production formulas and figures are protected as trade secrets and never shared with third parties.</p>
+                    <h4 style="color: #333; font-weight: 700; margin-top: 30px;">Transparency in Advertising and Cookies</h4>
+                    <p>We partner with Google AdSense and strictly adhere to the General Data Protection Regulation (GDPR) and CCPA. Our site uses cookies to enhance user experience and serve relevant advertisements. Users have full control over their settings and can opt-out via Google’s ad settings.</p>
+                    <h4 id="terms" style="color: #333; font-weight: 700; margin-top: 30px;">Service Level Agreement (SLA)</h4>
+                    <p>Our commitment to our global clients is unwavering. We provide 24/7 technical support for critical system issues. We ensure our ERP is optimized for various bandwidth situations common in industrial areas worldwide. Regular updates ensure your software always meets modern security and feature standards.</p>
+                 </div>
+            </section>
+
+            <div id="landingContact" style="margin: 60px 10%; padding: 80px 60px; background: #ffffff; color: #1a1a1a; border-radius: 40px; text-align: center; border: 1px solid #eee; box-shadow: 0 15px 40px rgba(0,0,0,0.05);">
+    
+                <h2 style="margin-bottom: 25px; color: #1a1a1a; font-size: 34px; font-weight: 800;">Get In Touch</h2>
+                <p style="font-size: 19px; color: #666; margin-bottom: 45px; max-width: 700px; margin-left: auto; margin-right: auto;">
+                    Our team of experts is ready to help you digitize your global factory operations. Click below to contact us directly.
+                </p>
+
+                <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px;">
+                    <a href="https://wa.me/8801740729090" target="_blank" style="text-decoration: none; color: #1a1a1a; border: 1px solid #ddd; padding: 15px 30px; border-radius: 12px; font-size: 17px; font-weight: 600; transition: 0.3s; display: flex; align-items: center; gap: 10px;" onmouseover="this.style.background='#f9f9f9'; this.style.borderColor='#bbb'" onmouseout="this.style.background='transparent'; this.style.borderColor='#ddd'">
+                        <span>💬</span> WhatsApp: +8801740729090
+                    </a>
+                    <a href="tel:+8801740729090" style="text-decoration: none; color: #1a1a1a; border: 1px solid #ddd; padding: 15px 30px; border-radius: 12px; font-size: 17px; font-weight: 600; transition: 0.3s; display: flex; align-items: center; gap: 10px;" onmouseover="this.style.background='#f9f9f9'; this.style.borderColor='#bbb'" onmouseout="this.style.background='transparent'; this.style.borderColor='#ddd'">
+                        <span>📞</span> Call: +8801740729090
+                    </a>
+                    <a href="mailto:rubelplan4@gmail.com" style="text-decoration: none; color: #1a1a1a; border: 1px solid #ddd; padding: 15px 30px; border-radius: 12px; font-size: 17px; font-weight: 600; transition: 0.3s; display: flex; align-items: center; gap: 10px;" onmouseover="this.style.background='#f9f9f9'; this.style.borderColor='#bbb'" onmouseout="this.style.background='transparent'; this.style.borderColor='#ddd'">
+                        <span>📧</span> Email: rubelplan4@gmail.com
+                    </a>
+                </div>
+
+                <div style="margin-top: 55px; padding-top: 30px; border-top: 1px solid #f0f0f0;">
+                    <p style="font-size: 14px; color: #999; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; font-weight: 600;">Corporate HQ</p>
+                    <p style="font-size: 18px; color: #333; font-weight: 500;">Vatpara, Pachdona, Narsingdi, Bangladesh</p>
+                    <p style="font-size: 14px; color: #aaa; margin-top: 15px;">Providing global industrial support 24/7.</p>
+                </div>
+
+            </div>
+        </main>
+
+        <aside style="width: 288px; flex-shrink: 0; padding: 20px 10px; background: #fff; border-left: 1px solid #f0f0f0; position: sticky; top: 80px; align-self: flex-start;">
+            <span style="display: block; font-size: 11px; color: #bbb; margin-bottom: 10px; letter-spacing: 1px; text-transform: uppercase; font-weight: 600; text-align: center;">Advertisement</span>
+            <div style="min-height: 600px;">
+                <ins class="adsbygoogle" style="display:block" data-ad-format="fluid" data-ad-layout-key="-fb+5w+4e-db+86" data-ad-client="ca-pub-8648299603771033" data-ad-slot="9606648113"></ins>
+                <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+            </div>
+        </aside>
+
+    </div>
+
+    <footer style="background: #ffffff; padding: 60px 10%; color: #666; border-top: 1px solid #eee;">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; margin-bottom: 50px;">
+            <div>
+                <h3 style="color: #1a1a1a; margin-bottom: 20px;">Smart Presentation ERP</h3>
+                <p style="font-size: 14px; line-height: 1.6;">The ultimate industrial management software designed to scale with your global business. From raw material tracking to final product shipment.</p>
+            </div>
+            <div>
+                <h3 style="color: #1a1a1a; margin-bottom: 20px;">Quick Navigation</h3>
+                <ul style="list-style: none; padding: 0; font-size: 14px; line-height: 2;">
+                    <li><a href="#about" style="color: #666; text-decoration: none;">Industrial Overview</a></li>
+                    <li><a href="#presentation-module" style="color: #666; text-decoration: none;">Slide Presentation</a></li>
+                    <li><a href="#excel-module" style="color: #666; text-decoration: none;">Excel Integration</a></li>
+                    <li><a href="#user-guide" style="color: #666; text-decoration: none;">Operational Manual</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 style="color: #1a1a1a; margin-bottom: 20px;">Legal & Info</h3>
+                <ul style="list-style: none; padding: 0; font-size: 14px; line-height: 2;">
+                    <li><a href="#policy-deep-dive" style="color: #00bcd4; text-decoration: none; font-weight: bold;">Privacy Policy</a></li>
+                    <li><a href="#policy-deep-dive" style="color: #00bcd4; text-decoration: none; font-weight: bold;">Terms of Service</a></li>
+                    <li><a href="#about" style="color: #00bcd4; text-decoration: none; font-weight: bold;">About Us</a></li>
+                    <li><a href="#landingContact" style="color: #666; text-decoration: none;">Contact Support</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 style="color: #1a1a1a; margin-bottom: 20px;">Industry Focus</h3>
+                <ul style="list-style: none; padding: 0; font-size: 14px; line-height: 2;">
+                    <li>Knitting & Weaving Units</li>
+                    <li>Dyeing & Finishing Plants</li>
+                    <li>Garment Manufacturing (RMG)</li>
+                    <li>Global Textile Conglomerates</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div style="text-align: center; font-size: 13px; border-top: 1px solid #eee; padding-top: 30px;">
+            <p>&copy; 2026 Smart Presentation ERP Global - All Rights Reserved.</p>
+            <p>Designed, Developed, and Maintained by <strong>Rubel Ahmed</strong></p>
+            <p style="margin-top: 10px; color: #aaa;">Empowering the backbone of the Global Economy.</p>
+        </div>
+    </footer>
+</div>
+    <div id="appDashboard" class="hidden" style="display: flex; width: 100%; height: 100vh; overflow: hidden;">
+    
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-title">Presentation</div>
+        <div class="nav-item active" onclick="switchTab('dashboard', event)">Dashboard</div>
+        <div class="nav-item" onclick="switchTab('report', event)">KPI</div>
+        <div class="nav-item" onclick="switchTab('analytics', event)">Analytics</div>
+        
+
+        <div style="margin-top: 1in; padding: 0 10px; width: 100%; box-sizing: border-box;">
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-8648299603771033"
+                 data-ad-slot="7550173834"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>
+                 (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+    </div>
+
+    <div class="main-content" style="display: flex; flex-direction: column; flex: 1; overflow: hidden;">
+        <header class="header">
+            <div style="display:flex; align-items:center;">
+                <button class="menu-btn" onclick="toggleSidebar(event)">☰</button>
+                <h3 id="viewTitle">Dashboard</h3>
+            </div>
+            <div style="display:flex; gap:15px; align-items:center;">
+                <select id="fSecFilter" class="hidden" onchange="updatePresentation()" style="padding: 10px; border-radius: 20px; border: 1px solid #ddd;"></select>
+                <div style="display:flex; align-items:center; gap:8px;">
+                    <input type="checkbox" id="monthEnable" checked onchange="handleFilterUpdate()" style="width:18px; height:18px; cursor:pointer;">
+                    <div id="monthContainer" style="display:flex; gap:5px; background:#fff; border-radius:30px; padding:5px; border:1px solid #eee;"></div>
+                </div>
+                <select id="fYear" onchange="handleFilterUpdate()" style="padding: 10px; border-radius: 20px; border: 1px solid #ddd;"></select>
+            </div>
+            <div id="auth-container"></div>
+        </header>
+
+        <div id="dashboardTopAction" style="position: absolute; bottom: 30px; right: 30px; z-index: 10;">
+            <button onclick="openModal('createModal')" 
+                    title="Create New Section"
+                    style="width: 60px; height: 60px; background: #00bcd4; color: white; border: none; border-radius: 50%; cursor: pointer; font-size: 35px; font-weight: 300; display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 20px rgba(0, 188, 212, 0.4); transition: 0.3s; padding: 0; line-height: 1;" 
+                    onmouseover="this.style.transform='scale(1.1) rotate(90deg)'; this.style.backgroundColor='#00acc1'; this.style.boxShadow='0 8px 25px rgba(0, 188, 212, 0.5)';" 
+                    onmouseout="this.style.transform='scale(1) rotate(0deg)'; this.style.backgroundColor='#00bcd4'; this.style.boxShadow='0 6px 20px rgba(0, 188, 212, 0.4)';"
+            >
+                +
+            </button>
+        </div>
+
+        <div id="dashboardView" style="padding:25px; overflow-y:auto; display:flex; flex-wrap:wrap; align-content: flex-start; gap:20px; flex: 1;"></div>
+
+        <div id="reportView" class="hidden">
+            <div class="report-left">
+                <div style="display:flex; gap:20px;">
+                    <div id="overviewCard" class="card" style="flex:1; border-left:10px solid var(--primary);"></div>
+                    <div id="averageCard" class="card" style="flex:1; border-left:10px solid #ff9800;"></div>
+                </div>
+                <div class="chart-container"><canvas id="productionChart"></canvas></div>
+            </div>
+            <div id="presGroupContainer" class="report-right"></div>
+        </div>
+
+        <div id="analyticsView" class="hidden" style="padding: 20px; height: 100%; overflow-y: auto; background-color: #f4f7fe;">
+            <div class="report-card" style="background: white; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border: 1px solid #e0e6ed; display: flex; flex-direction: column; max-height: 95vh; overflow: hidden;">
+                <div class="no-print" style="padding: 15px 25px; border-bottom: 1px solid #eee; display: flex; justify-content: space-between; align-items: center; background: #fff;">
+                    <span style="color: #888; font-size: 14px;">💡 টিপস: টাইটেল বা সিগনেচারে ক্লিক করে সরাসরি নাম পরিবর্তন করুন।</span>
+                    <div style="display: flex; gap: 10px;">
+                        <button onclick="downloadExcel('analytics')" style="padding: 8px 18px; border-radius: 8px; border: 1px solid #ddd; background: #fff; cursor: pointer; font-weight: 500;">Download Excel</button>
+                        <button onclick="window.print()" style="padding: 8px 18px; border-radius: 8px; background: #00bcd4; color: white; border: none; cursor: pointer; font-weight: 600;">Print Report</button>
+                    </div>
+                </div>
+
+                <div id="printWrapper" style="overflow: auto; padding: 40px; flex: 1;">
+                    <div id="printableAreaAnalytics" style="min-width: 1100px; margin: auto;">
+                        <div style="text-align: center; margin-bottom: 40px; position: relative;">
+                            <h1 id="editableCompany" contenteditable="true" style="margin: 0; color: #555; font-size: 34px; font-weight: 600; outline: none; border: 1px dashed transparent; transition: 0.3s; display: inline-block; padding: 0 10px;" onmouseover="this.style.border='1px dashed #00bcd4'" onmouseout="this.style.border='1px dashed transparent'">Company Name</h1>
+                            <div style="margin-top: 10px;">
+                                <p id="editableReportName" contenteditable="true" style="margin: 0; color: #555; font-size: 22px; font-weight: 400; outline: none; border: 1px dashed transparent; transition: 0.3s; display: inline-block; padding: 2px 10px;" onmouseover="this.style.border='1px dashed #00bcd4'" onmouseout="this.style.border='1px dashed transparent'">Annual Production Performance Analytics</p>
+                            </div>
+                        </div>
+                        <table id="analyticsTable" style="width: 100%; border-collapse: collapse; font-size: 15px; border: 1px solid #000; color: #000;">
+                            <thead>
+                                <tr style="background-color: #f9fafb;">
+                                    <th style="border: 1px solid #000; padding: 12px; font-weight: bold;">Section</th>
+                                    <th style="border: 1px solid #000; padding: 12px; font-weight: bold;">Categories</th>
+                                    <th style="border: 1px solid #000; padding: 12px; font-weight: bold; text-align: left;">Item Name</th>
+                                    <th style="border: 1px solid #000; padding: 8px;">Jan</th>
+                                    <th style="border: 1px solid #000; padding: 8px;">Feb</th>
+                                    <th style="border: 1px solid #000; padding: 8px;">Mar</th>
+                                    <th style="border: 1px solid #000; padding: 8px;">Apr</th>
+                                    <th style="border: 1px solid #000; padding: 8px;">May</th>
+                                    <th style="border: 1px solid #000; padding: 8px;">Jun</th>
+                                    <th style="border: 1px solid #000; padding: 8px;">Jul</th>
+                                    <th style="border: 1px solid #000; padding: 8px;">Aug</th>
+                                    <th style="border: 1px solid #000; padding: 8px;">Sep</th>
+                                    <th style="border: 1px solid #000; padding: 8px;">Oct</th>
+                                    <th style="border: 1px solid #000; padding: 8px;">Nov</th>
+                                    <th style="border: 1px solid #000; padding: 8px;">Dec</th>
+                                    <th style="border: 1px solid #000; padding: 12px; background: #f0f0f0;">Total</th>
+                                    <th style="border: 1px solid #000; padding: 12px; background: #f0f0f0;">Target</th>
+                                    <th style="border: 1px solid #000; padding: 12px; background: #f0f0f0;">Achieved</th>
+                                    <th style="border: 1px solid #000; padding: 12px; background: #f0f0f0;">Achi%</th>
+                                </tr>
+                            </thead>
+                            <tbody id="analyticsBody"></tbody>
+                        </table>
+                        <div id="reportFooterAnalytics" style="display: flex; justify-content: space-between; margin-top: 100px; padding: 0 30px;">
+                            <div style="text-align: center; width: 220px;">
+                                <div style="border-top: 1.5px solid #000; margin-bottom: 8px;"></div>
+                                <p contenteditable="true" style="margin: 0; font-size: 18px; font-weight: 600; outline: none; border-radius: 4px;">Prepared By</p>
+                                <p contenteditable="true" style="margin: 0; font-size: 14px; color: #777; outline: none;">(Name & Date)</p>
+                            </div>
+                            <div style="text-align: center; width: 220px;">
+                                <div style="border-top: 1.5px solid #000; margin-bottom: 8px;"></div>
+                                <p contenteditable="true" style="margin: 0; font-size: 18px; font-weight: 600; outline: none; border-radius: 4px;">Checked By</p>
+                                <p contenteditable="true" style="margin: 0; font-size: 14px; color: #777; outline: none;">(Name & Date)</p>
+                            </div>
+                            <div style="text-align: center; width: 220px;">
+                                <div style="border-top: 1.5px solid #000; margin-bottom: 8px;"></div>
+                                <p contenteditable="true" style="margin: 0; font-size: 18px; font-weight: 600; outline: none; border-radius: 4px;">Authorized Signature</p>
+                                <p contenteditable="true" style="margin: 0; font-size: 14px; color: #777; outline: none;">(Seal & Sign)</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="entryModal" class="modal">
+        <div class="modal-content">
+            <span class="close-icon" onclick="closeModal('entryModal')">&times;</span>
+            <h3 id="modalSecName" style="text-align:center; margin-bottom:15px;"></h3>
+            <input type="date" id="prodDate" onchange="fetchDataByDate()" style="width:100%; padding:10px; margin-bottom:15px; border-radius:10px; border:1px solid #ddd;">
+            
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+                <label id="labelT_Entry" style="font-weight:bold;">Target</label>
+                <input type="number" id="tVal" class="val-in" oninput="calcTotal()">
+            </div>
+
+            <div id="dynamicContainer"></div>
+
+            <button onclick="toggleMasterMode()" style="width:100%; padding:8px; margin-top:15px; background:#f0f4f9; border:1px dashed var(--primary); border-radius:10px; cursor:pointer;">Format-Setup</button>
+            
+            <div id="masterActions" class="hidden" style="margin-top:10px; background:#fff8f0; padding:10px; border-radius:10px; border:1px solid #ff9800;">
+                <button onclick="addTable()" style="width:100%; padding:8px; margin-bottom:10px; cursor:pointer; background:#fff; border:1px solid #ddd; border-radius:5px;">+ Add Table</button>
+                <div id="masterItemList"></div>
+            </div>
+
+            <div style="background:#e0f7fa; padding:15px; border-radius:12px; margin-top:15px;">
+                <div style="display:flex; justify-content:space-between; align-items:center;">
+                    <label id="labelA_Entry" style="font-weight:bold;">TOTAL ACHIEVED</label>
+                    <input type="number" id="aVal" class="val-in" style="background:#fff;" readonly>
+                </div>
+                <textarea id="prodNote" class="note-area" placeholder="Production note..." style="width:100%; height:60px; margin-top:10px; padding:10px; border:1px solid #ddd; border-radius:10px; resize:none;"></textarea>
+            </div>
+            <button class="save-btn" onclick="saveData()">Saved</button>
+        </div>
+    </div>
+
+    <div id="createModal" class="modal">
+        <div class="modal-content">
+            <span class="close-icon" onclick="closeModal('createModal')">&times;</span>
+            <h3>Create New Section</h3>
+            <input type="text" id="newSecName" placeholder="Enter Section Name" style="width:100%; margin-bottom:10px; padding:8px;">
+            <div style="display:flex; gap:5px; margin-bottom:10px;">
+                <input type="text" id="labelT" value="Target" title="Label for Target" style="width:33%; padding:5px; font-size:12px; border:1px solid #ddd; border-radius:5px;">
+                <input type="text" id="labelA" value="Achieved" title="Label for Achieved" style="width:33%; padding:5px; font-size:12px; border:1px solid #ddd; border-radius:5px;">
+                <input type="text" id="labelB" value="Balance" title="Label for Balance" style="width:33%; padding:5px; font-size:12px; border:1px solid #ddd; border-radius:5px;">
+            </div>
+            <button class="save-btn" onclick="createSection()">CREATE</button>
+        </div>
+    </div>
+
+    <div id="shareModal" class="modal">
+        <div class="modal-content">
+            <span class="close-icon" onclick="closeModal('shareModal')">&times;</span>
+            <h3 id="sharingSecName">Share Section</h3>
+            <div style="display:flex; gap:5px; margin:15px 0;">
+                <input type="email" id="shareEmail" placeholder="Gmail Address" style="flex:1; padding:10px; border:1px solid #ddd; border-radius:10px;">
+                <select id="shareRole" style="padding:10px; border-radius:10px; border:1px solid #ddd;">
+                    <option value="viewer">Viewer</option>
+                    <option value="admin">Admin</option>
+                </select>
+            </div>
+            <button class="save-btn" onclick="addPermission()">Add User</button>
+            <div id="shareList" style="margin-top:20px;"></div>
+        </div>
+    </div>
+
+    <div id="groupDetailsModal" class="modal">
+        <div id="printableAreaGroup" class="a4-container">
+            <div class="modal-header no-print" style="display:flex; justify-content:flex-end; gap:10px; padding:15px; border-bottom:1px solid #eee;">
+                <button onclick="downloadExcel('group')" style="padding:8px 15px; cursor:pointer;">Excel</button>
+                <button onclick="window.print()" style="padding:8px 15px; cursor:pointer;">Print</button>
+                <button onclick="closeModal('groupDetailsModal')" style="padding:8px 15px; cursor:pointer;">Close</button>
+            </div>
+            <div class="a4-page">
+                <div style="text-align: center; margin-bottom: 40px; font-family: sans-serif;">
+                    <h1 id="groupCompanyName" contenteditable="true" style="margin: 0; color: #555; font-size: 34px; font-weight: 600; outline: none; border: 1px dashed transparent; display: inline-block; padding: 0 10px;">Amanat Shah Fabrics Ltd.</h1>
+                    <div style="margin-top: 5px;">
+                        <p id="groupCompanyAddress" contenteditable="true" style="margin: 0; color: #555; font-size: 18px; outline: none; display: inline-block; padding: 2px 10px;">Vatpara, Pachdona, Narsingdi</p>
+                    </div>
+                    <div style="margin-top: 10px;">
+                        <h3 id="reportTitle" contenteditable="true" style="margin: 0; color: #555; font-size: 22px; outline: none; display: inline-block; padding: 2px 10px;">Production Report</h3>
+                    </div>
+                </div>
+                <table id="reportTableExcel" class="report-table" style="width: 100%;">
+                    <thead><tr id="dynamicHeadings"></tr></thead>
+                    <tbody id="groupDetailBody"></tbody>
+                    <tfoot id="groupDetailFoot"></tfoot>
+                </table>
+                </div>
+        </div>
+    </div>
+
+    <div id="overviewDetailsModal" class="modal">
+        <div id="printableAreaOverview" class="a4-container">
+            <div class="modal-header no-print" style="padding: 15px; display: flex; justify-content: flex-end; gap: 10px; border-bottom: 1px solid #eee;">
+                <button onclick="downloadExcel('overview')" style="padding:8px 18px; cursor:pointer;">Excel</button>
+                <button onclick="window.print()" style="padding:8px 18px; cursor:pointer;">Print</button>
+                <button onclick="closeModal('overviewDetailsModal')" style="padding:8px 18px; cursor:pointer;">Close</button>
+            </div>
+            <div class="a4-page">
+                <div style="text-align: center; margin-bottom: 40px;">
+                    <h1 id="overviewCompanyName" contenteditable="true" style="margin: 0; color: #555; font-size: 34px; font-weight: 600; outline: none; display: inline-block;">Company Name</h1>
+                    <p id="overviewCompanyAddress" contenteditable="true" style="margin: 5px 0; color: #555; font-size: 18px; outline: none;">123 Tech Avenue, Suite 4B, Dhaka, Bangladesh.</p>
+                    <h2 contenteditable="true" style="margin: 10px 0; color: #555; font-size: 26px; outline: none;">Production Report</h2>
+                </div>
+                <div style="text-align: left; margin-bottom: 10px;">
+                    <span id="rpSection" style="font-size: 15px; color: #000;">Section: Delivery | Group: Finished</span>
+                </div>
+                <table class="report-table" id="excelTable">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Target</th>
+                            <th>Achieved</th>
+                            <th>Achi%</th>
+                            <th>Note</th>
+                        </tr>
+                    </thead>
+                    <tbody id="ovDetailBody"></tbody>
+                    <tfoot id="ovDetailFoot"></tfoot>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+
+<script>
+    function updateUIVisibility(user) {
+        const landing = document.getElementById('landingPage');
+        const dashboard = document.getElementById('appDashboard');
+        
+        if (user) {
+            if(landing) landing.style.display = 'none';
+            dashboard.style.display = 'flex';
+            dashboard.classList.remove('hidden');
+        } else {
+            if(landing) landing.style.display = 'block';
+            dashboard.style.display = 'none';
+            dashboard.classList.add('hidden');
+        }
+    }
+</script>
+
+</body>  
